@@ -1,0 +1,35 @@
+{
+  "name": "tucson-trailguide",
+  "version": "0.0.1",
+  "description": "Ryan and Dave are at it again",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "vows"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rclark/tucson-trailguide.git"
+  },
+  "keywords": [
+    "trails",
+    "Tucson",
+    "Arizona",
+    "hiking",
+    "maps"
+  ],
+  "author": "Ryan and David Clark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rclark/tucson-trailguide/issues"
+  },
+  "dependencies": {
+    "express": "~3.3.5",
+    "jade": "~0.34.1"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0"
+  }
+}
