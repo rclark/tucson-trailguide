@@ -1,8 +1,10 @@
 ## Documenting the project's file-structure
 
+- `bower.json`: Installation instructions for Bower
 - __db__: Server modules for interaction with CouchDB
 - __dist__: Distributables for the client application
 - __docs__: Documentation
+- `Gruntfile.coffee`: Build instructions for Grunt
 - `index.js`: Runs the Express.js server
 - `LICENSE`: MIT License
 - `package.json`: For building and other NPM interactions
