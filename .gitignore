@@ -1,2 +1,4 @@
 node_modules/
 configuration.js
+.sass-cache/
+bower_components/

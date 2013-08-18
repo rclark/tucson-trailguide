@@ -33,6 +33,11 @@
   },
   "devDependencies": {
     "vows": "~0.7.0",
-    "request": "~2.27.0"
+    "request": "~2.27.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.4.1",
+    "grunt-autoprefixer": "~0.2.20130806",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-contrib-cssmin": "~0.6.1"
   }
 }
