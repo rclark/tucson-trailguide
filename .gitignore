@@ -3,3 +3,5 @@ configuration.js
 .sass-cache/
 bower_components/
 .DS_Store
+dist/*
+!dist/readme.md

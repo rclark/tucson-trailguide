@@ -13,14 +13,14 @@ module.exports = (grunt) ->
     autoprefixer:
       dev:
         files:
-          "dist/main.css": "src/css/main-unprefixed.css"
+          "src/css/main-prefixed.css": "src/css/main-unprefixed.css"
 
     cssmin:
       dist:
         options:
           keepSpecialComments: 0
         files:
-          "dist/main.css": "dist/main.css"
+          "dist/main.min.css": "src/css/main-prefixed.css"
 
     watch:
       livereload:
