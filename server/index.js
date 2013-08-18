@@ -8,6 +8,11 @@ app.set('view engine', 'jade');
 app.set('views', path.resolve(__dirname, '..', 'templates'));
 app.use('/static', express.static(__dirname, '..', 'dist'));
 
+app.use(function prodOrDev (req, res, next) {
+    res.templateContext = {dev: app.get('env') === 'development'};
+    next();    
+});
+
 app.get('/', routes.homePage);
 
 app.get('/map', routes.mapPage);

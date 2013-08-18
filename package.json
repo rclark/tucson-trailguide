@@ -9,7 +9,8 @@
   "scripts": {
     "test": "vows test/* --spec",
     "prepublish": "node setup.js; node ./node_modules/bower/bin/bower install",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "NODE_ENV=development node index.js"
   },
   "repository": {
     "type": "git",
