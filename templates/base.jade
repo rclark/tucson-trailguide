@@ -1,7 +1,24 @@
 !!!
 html
     head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
         title Wonderful Trails
-        
+
+        if dev
+            link(rel="stylesheet", href="static/main.css")
+        else
+            link(rel="stylesheet", href="static/main.min.css")
+
+        block head
+
     body
+
+        block header
+            include includes/header
+
         block body
+
+        if dev
+            script(src="http://localhost:35729/livereload.js")
+        block bottomscripts
