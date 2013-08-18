@@ -26,6 +26,16 @@ vows.describe('The HTTP server').addBatch({
             assert.equal(response.statusCode, 200);
         }
     },
+    'when asked for a static file': {
+        topic: function () {
+            port++;
+            require('../server').test(port);
+            request('http://localhost:' + port + '/static/main.css', this.callback);
+        },
+        'returns a 200': function (err, response, body) {
+            assert.equal(response.statusCode, 200);    
+        }
+    },
     'when asked for a non-existant page': {
         topic: function () {
             port++;
