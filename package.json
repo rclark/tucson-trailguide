@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "vows test/* --spec",
-    "prepublish": "node setup.js; node ./node_modules/bower/bin/bower install",
+    "prepublish": "node setup.js; node ./node_modules/bower/bin/bower install; node ./node_modules/grunt-cli/bin/grunt build",
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development node index.js"
   },
@@ -40,6 +40,7 @@
     "grunt-autoprefixer": "~0.2.20130806",
     "grunt-contrib-watch": "~0.5.2",
     "grunt-contrib-cssmin": "~0.6.1",
-    "bower": "~1.1.2"
+    "bower": "~1.1.2",
+    "grunt-cli": "~0.1.9"
   }
 }
