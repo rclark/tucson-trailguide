@@ -5,9 +5,14 @@ var fs = require("fs"),
     };
 
 // Eventually I'll accept user-input
-var serverConfig = defaultServerConfig;
+var config = {
+    serverConfig: defaultServerConfig,
+    devScripts: [
+        '/dev-static/leaflet/build/build.js'
+    ]
+};
 
 fs.writeFile(
     "configuration.js", 
-    "module.exports={};module.exports.serverConfig=" + JSON.stringify(serverConfig) + ";"
+    "module.exports=" + JSON.stringify(config) + ";"
 );
