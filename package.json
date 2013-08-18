@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "vows test/* --spec",
-    "prepublish": "node setup.js",
+    "prepublish": "node setup.js; node ./node_modules/bower/bin/bower install",
     "start": "node index.js"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "grunt-contrib-sass": "~0.4.1",
     "grunt-autoprefixer": "~0.2.20130806",
     "grunt-contrib-watch": "~0.5.2",
-    "grunt-contrib-cssmin": "~0.6.1"
+    "grunt-contrib-cssmin": "~0.6.1",
+    "bower": "~1.1.2"
   }
 }
