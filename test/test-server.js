@@ -45,5 +45,15 @@ vows.describe('The HTTP server').addBatch({
         'returns 404': function (err, response, body) {
             assert.equal(response.statusCode, 404);    
         }
+    },
+    'when asked for a development file from bower': {
+        topic: function () {
+            port++;
+            require('../server').test(port);
+            request('http://localhost:' + port + '/their-js/leaflet/build/build.js', this.callback);
+        },
+        'returns a 200': function (err, response, body) {
+            assert.equal(response.statusCode, 200);    
+        }
     }
 }).export(module);
