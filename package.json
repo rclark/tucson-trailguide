@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "vows"
+    "test": "vows test/* --spec",
+    "prepublish": "node setup.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "jade": "~0.34.1"
   },
   "devDependencies": {
-    "vows": "~0.7.0"
+    "vows": "~0.7.0",
+    "request": "~2.27.0"
   }
 }
