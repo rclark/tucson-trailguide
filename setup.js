@@ -1,20 +1,27 @@
-var fs = require('fs'),
-    // Default configuration parameters
-    defaultServerConfig = {
+var fs = require('fs');
+    
+var argv = require('optimist')
+    .default({
+        updatePort: 2999,
+        updateStart: '',
+        updateStop: '',
+        gitUser: 'just',
+        gitRepo: 'a',
+        travisToken: 'fake',
         serverPort: 3000
-    }
-    defaultUpdates = {
-        port: 2999,
-        stop: '',
-        start: '',
-        auth: '',
-        enabled: true
-    };
+    })
+    .argv;
 
-// Eventually I'll accept user-input
 var config = {
-    serverConfig: defaultServerConfig,
-    updates: defaultUpdates,
+    serverConfig: {
+        serverPort: argv.serverPort
+    },
+    updates: {
+        port: argv.updatePort,
+        start: argv.updateStart,
+        stop: argv.updateStop,
+        auth: authTag(argv.gitUser, argv.gitRepo, argv.travisToken)
+    },
     devScripts: [
         '/their-js/leaflet/dist/leaflet-src.js'
     ]
