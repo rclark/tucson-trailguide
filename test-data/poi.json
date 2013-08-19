@@ -1,4 +1,1 @@
-{
-    "type": "FeatureCollection",
-    "features": []
-}
+{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"Name":"Finger Rock"},"geometry":{"type":"Point","coordinates":[-110.8963394165039,32.36546323597204]},"id":"poi-1"},{"type":"Feature","properties":{"Name":"La Ventana"},"geometry":{"type":"Point","coordinates":[-110.87076187133788,32.38133867508005]},"id":"poi-2"},{"type":"Feature","properties":{"Name":"Maiden Pools"},"geometry":{"type":"Point","coordinates":[-110.85834056138992,32.35292945601888]},"id":"poi-3"}]}
