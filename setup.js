@@ -8,11 +8,11 @@ var fs = require("fs"),
 var config = {
     serverConfig: defaultServerConfig,
     devScripts: [
-        '/dev-static/leaflet/build/build.js'
+        '/their-js/leaflet/dist/leaflet-src.js'
     ]
 };
 
 fs.writeFile(
-    "configuration.js", 
+    "configuration.js",
     "module.exports=" + JSON.stringify(config) + ";"
 );

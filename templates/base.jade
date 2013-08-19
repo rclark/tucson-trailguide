@@ -6,6 +6,7 @@ html
         title Wonderful Trails
 
         if dev
+            link(rel="stylesheet", href="their-js/leaflet/dist/leaflet.css")
             link(rel="stylesheet", href="static/main.css")
         else
             link(rel="stylesheet", href="static/main.min.css")
@@ -20,5 +21,7 @@ html
         block body
 
         if dev
+            each script in devScripts
+                script(src="#{script}")
             script(src="http://localhost:35729/livereload.js")
         block bottomscripts

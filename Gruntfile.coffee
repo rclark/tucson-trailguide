@@ -20,7 +20,10 @@ module.exports = (grunt) ->
         options:
           keepSpecialComments: 0
         files:
-          "dist/main.min.css": "dist/main.css"
+          "dist/main.min.css": [
+            "bower_components/leaflet/dist/leaflet.css",
+            "dist/main.css"
+          ]
 
     watch:
       livereload:
