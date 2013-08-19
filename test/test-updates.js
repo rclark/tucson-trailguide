@@ -62,7 +62,7 @@ function update (auth) {
     port--;
     require('../updates').test(port);
     request({
-        url: 'http://localhost:' + port + '/update',
+        url: 'http://localhost:' + port + '/update-hook',
         json: postBody,
         method: 'post',
         headers: {
