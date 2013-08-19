@@ -5,7 +5,7 @@ var vows = require('vows'),
     request = require('request'),
     port = 3000;
 
-vows.describe('The HTTP server').addBatch({
+vows.describe('The Express.js server').addBatch({
     'when asked for the home page': {
         topic: function () {
             port++;
