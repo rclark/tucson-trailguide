@@ -40,11 +40,16 @@ module.exports = (grunt) ->
           "src/scss/**/*.scss"
         ]
         tasks: ["style"]
+        
+    exec:
+      buildLeaflet:
+        command: "cd bower_components/leaflet; npm install; node ../../node_modules/jake/bin/cli.js"
 
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-autoprefixer"
+  grunt.loadNpmTasks "grunt-exec"
 
   grunt.registerTask "style", ["sass:dev", "autoprefixer:dev"]
-  grunt.registerTask "build", ["style", "cssmin:dist"]
+  grunt.registerTask "build", ["style", "exec:buildLeaflet", "cssmin:dist"]
