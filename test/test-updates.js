@@ -5,7 +5,7 @@ var postBody = {
     "status": null,
     "started_at": null,
     "finished_at": null,
-    "status_message": "Passed",
+    "status_message": "Failed",
     "commit": "62aae5f70ceee39123ef",
     "branch": "master",
     "message": "the commit message",

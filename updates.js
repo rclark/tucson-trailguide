@@ -16,7 +16,7 @@ app.post('/update-hook', function (req, res) {
             if (showMessages) process.stdout.write('---->>>> Updating application\n');
             
             // Stop the server
-            if (showMessages) process.stdout.write('>> ' + config.updates.stop);    
+            if (showMessages) process.stdout.write('>> ' + config.updates.stop + '\n');    
             exec(config.updates.stop, function (err, stdout, stderr) {
                 if (err !== null) {
                     if (showMessages) process.stderr.write(stderr);
@@ -25,7 +25,7 @@ app.post('/update-hook', function (req, res) {
                     
                     // Pull from the repo
                     if (showMessages) process.stdout.write(stdout);
-                    if (showMessages) process.stdout.write('>> git pull');
+                    if (showMessages) process.stdout.write('>> git pull\n');
                     exec('git pull', function (err, stdout, stderr) {
                         if (err !== null) {
                             if (showMessages) process.stderr.write(stderr);
@@ -34,7 +34,7 @@ app.post('/update-hook', function (req, res) {
                             
                             // npm install
                             if (showMessages) process.stdout.write(stdout);
-                            if (showMessages) process.stdout.write('>> npm install');
+                            if (showMessages) process.stdout.write('>> npm install\n');
                             exec('npm install', function (err, stdout, stderr) {
                                 if (err !== null) {
                                     if (showMessages) process.stderr.write(stderr);
@@ -43,13 +43,14 @@ app.post('/update-hook', function (req, res) {
                                     
                                     // Start the server
                                     if (showMessages) process.stdout.write(stdout);
-                                    if (showMessages) process.stdout.write('>> ' + config.updates.start);
+                                    if (showMessages) process.stdout.write('>> ' + config.updates.start + '\n');
                                     exec(config.updates.start, function (err, stdout, stderr) {
                                         if (err !== null) {
                                             if (showMessages) process.stderr.write(stderr);
                                             res.send(500);
                                         } else {
                                             if (showMessages) process.stdout.write(stdout);
+                                            if (showMessages) process.stdout.write('---->>>> Completed successfully\n');
                                             res.send(204);
                                         }
                                     });
@@ -59,10 +60,10 @@ app.post('/update-hook', function (req, res) {
                     });
                 }
             });
+        } else {
+            // Send the "OK", didn't do anything
+            res.send(204);
         }
-        
-        // Send the "OK"
-        res.send(204);
     }
 });
 
@@ -77,4 +78,4 @@ module.exports = {
     }
 };
 
-module.exports.start();
+//module.exports.start();
