@@ -85,8 +85,8 @@ vows.describe('The update server').addBatch({
         topic: function () {
             update.call(this, true);
         },
-        'returns a 200': function (err, response, body) {            
-            assert.equal(response.statusCode, 200);    
+        'returns a 204': function (err, response, body) {            
+            assert.equal(response.statusCode, 204);    
         }
     }
 }).export(module);
