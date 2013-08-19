@@ -4,3 +4,8 @@ node_js:
   - "0.10"
 before_install:
   - gem install sass
+notifications:
+  webhooks:
+    urls:
+      - http://www.tucsontrailguide.com/update-hook
+    on_failure: never
