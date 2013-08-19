@@ -1,7 +1,5 @@
 var vows = require('vows'),
     assert = require('assert'),
-    express = require('express'),
-    http = require('http'),
     request = require('request'),
     port = 3000;
 

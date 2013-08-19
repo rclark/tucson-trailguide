@@ -31,9 +31,5 @@ module.exports = {
     
     test: function (port) {
         app.listen(port);
-    },
-    
-    stop: function () {
-        app.close();
-    }   
+    }  
 };
