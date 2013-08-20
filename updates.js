@@ -12,6 +12,7 @@ app.post('/update-hook', function (req, res) {
         res.send(403);
     } else {
         res.send(204);
+        if (showMessages) process.stdout.write(JSON.stringify(req.body));
         
         // If the tests passed
         if (req.body.payload.status_message === 'Passed') {
