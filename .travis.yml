@@ -7,5 +7,5 @@ before_install:
 notifications:
   webhooks:
     urls:
-      - http://www.tucsontrailguide.com/update-hook
+      - http://dev.tucsontrailguide.com/update-hook
     on_failure: never
