@@ -11,6 +11,8 @@ app.post('/update-hook', function (req, res) {
         if (showMessages) process.stderr.write('Update Failed Authorization: ' + req.header('Authorization') + '\n');
         res.send(403);
     } else {
+        res.send(204);
+        
         // If the tests passed
         if (req.body.payload.status_message === 'Passed') {
             if (showMessages) process.stdout.write('---->>>> Updating application\n');
@@ -20,7 +22,6 @@ app.post('/update-hook', function (req, res) {
             exec(config.updates.stop, function (err, stdout, stderr) {
                 if (err !== null) {
                     if (showMessages) process.stderr.write(stderr);
-                    res.send(500);
                 } else {
                     
                     // Pull from the repo
@@ -29,7 +30,6 @@ app.post('/update-hook', function (req, res) {
                     exec('git pull', function (err, stdout, stderr) {
                         if (err !== null) {
                             if (showMessages) process.stderr.write(stderr);
-                            res.send(500);
                         } else {
                             
                             // npm install
@@ -38,7 +38,6 @@ app.post('/update-hook', function (req, res) {
                             exec('npm install', function (err, stdout, stderr) {
                                 if (err !== null) {
                                     if (showMessages) process.stderr.write(stderr);
-                                    res.send(500);
                                 } else {
                                     
                                     // Start the server
@@ -47,11 +46,9 @@ app.post('/update-hook', function (req, res) {
                                     exec(config.updates.start, function (err, stdout, stderr) {
                                         if (err !== null) {
                                             if (showMessages) process.stderr.write(stderr);
-                                            res.send(500);
                                         } else {
                                             if (showMessages) process.stdout.write(stdout);
                                             if (showMessages) process.stdout.write('---->>>> Completed successfully\n');
-                                            res.send(204);
                                         }
                                     });
                                 }
@@ -60,9 +57,6 @@ app.post('/update-hook', function (req, res) {
                     });
                 }
             });
-        } else {
-            // Send the "OK", didn't do anything
-            res.send(204);
         }
     }
 });
