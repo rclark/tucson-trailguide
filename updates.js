@@ -4,7 +4,7 @@ var express = require('express'),
     app = express(),
     showMessages = true;
 
-//app.use(express.bodyParser());
+app.use(express.bodyParser());
 
 app.post('/update-hook', function (req, res) {
     if (req.header('Authorization') !== config.updates.auth) {
