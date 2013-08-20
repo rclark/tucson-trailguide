@@ -12,10 +12,10 @@ app.post('/update-hook', function (req, res) {
         res.send(403);
     } else {
         res.send(204);
-        if (showMessages) process.stdout.write(JSON.stringify(req.body));
+        if (showMessages) process.stdout.write('---->>>> Recieved Update notification\n');
         
         // If the tests passed
-        if (req.body.payload.status_message === 'Passed') {
+        if (JSON.parse(req.body).payload.status_message === 'Passed') {
             if (showMessages) process.stdout.write('---->>>> Updating application\n');
             
             // Stop the server
