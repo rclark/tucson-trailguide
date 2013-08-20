@@ -4,7 +4,7 @@ var express = require('express'),
     app = express(),
     showMessages = true;
 
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
 
 app.post('/update-hook', function (req, res) {
     if (req.header('Authorization') !== config.updates.auth) {
@@ -13,7 +13,7 @@ app.post('/update-hook', function (req, res) {
     } else {
         res.send(204);
         if (showMessages) process.stdout.write('---->>>> Recieved Update notification\n');
-        
+        if (showMessages) process.stdout.write(req.body);
         // If the tests passed
         if (JSON.parse(req.body).payload.status_message === 'Passed') {
             if (showMessages) process.stdout.write('---->>>> Updating application\n');
