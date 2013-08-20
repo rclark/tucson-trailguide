@@ -1,4 +1,5 @@
-var fs = require('fs');
+var fs = require('fs'),
+    path = require('path');
     
 var argv = require('optimist')
     .default({
@@ -12,6 +13,12 @@ var argv = require('optimist')
     })
     .argv;
 
+if (path.existsSync('defaults.json')) {
+    data = JSON.parse(fs.readFileSync('defaults.json'));
+    for (key in data) {
+        argv[key] = data[key];    
+    }
+}
 var config = {
     serverConfig: {
         serverPort: argv.serverPort
