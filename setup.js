@@ -8,7 +8,7 @@ var fs = require("fs"),
 var config = {
     serverConfig: defaultServerConfig,
     devScripts: [
-        '/their-js/leaflet/dist/leaflet-src.js'
+        '/not-ours/leaflet/dist/leaflet-src.js'
     ]
 };
 

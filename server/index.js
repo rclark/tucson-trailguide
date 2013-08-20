@@ -8,8 +8,8 @@ app.set('view engine', 'jade');
 app.set('views', path.resolve(__dirname, '..', 'templates'));
 app.use('/static', express.static(path.resolve(__dirname, '..', 'dist')));
 if (app.get('env') === 'development') {
-    app.use('/their-js', express.static(path.resolve(__dirname, '..', 'bower_components')));
-    app.use('/our-js', express.static(path.resolve(__dirname, '..', 'src/js')));    
+    app.use('/not-ours', express.static(path.resolve(__dirname, '..', 'bower_components')));
+    app.use('/ours', express.static(path.resolve(__dirname, '..', 'src/js')));
 }
 
 app.use(function (req, res, next) {
@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
         dev: app.get('env') === 'development',
         devScripts: config.devScripts
     };
-    next();    
+    next();
 });
 
 app.get('/', routes.homePage);
@@ -28,12 +28,12 @@ module.exports = {
     start: function () {
         app.listen(config.serverConfig.serverPort);
     },
-    
+
     test: function (port) {
         app.listen(port);
     },
-    
+
     stop: function () {
         app.close();
-    }   
+    }
 };
