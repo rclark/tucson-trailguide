@@ -10,7 +10,8 @@
     "test": "vows test/* --spec",
     "prepublish": "node setup.js; node ./node_modules/bower/bin/bower install; node ./node_modules/grunt-cli/bin/grunt build",
     "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development node index.js"
+    "dev": "NODE_ENV=development node index.js",
+    "update-listener": "node update-listener.js"
   },
   "repository": {
     "type": "git",

@@ -72,5 +72,3 @@ module.exports = {
         app.listen(port);
     }
 };
-
-//module.exports.start();
