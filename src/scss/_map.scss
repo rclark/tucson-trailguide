@@ -1,8 +1,14 @@
+$map-sidebar-x: 30%;
 
+.map-wrapper {
+  @include u-absolute($header-y 0 0 0);
+}
+
+.map-sidebar {
+  @include u-absolute(0 n 0 0);
+  width: $map-sidebar-x;
+}
 
 .map {
-  background: black;
-  @include u-absolute(0 n n 0);
-  width: 100%;
-  height: 600px;
+  @include u-absolute(0 0 0 $map-sidebar-x);
 }

@@ -1,0 +1,5 @@
+.site-header {
+  @include u-vcenter-lh($header-y);
+  padding: 0 1em;
+  background: gray;
+}

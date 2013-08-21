@@ -1,13 +1,11 @@
 extends base
 
 block body
+    .map-wrapper
 
-    .row
-        .columns.large-3
-            .map-sidebar
-                p Sidebar contents
-        .columns.large-9
-            #map.map
+        #map.map
+        .map-sidebar
+            p Sidebar contents
 
 block bottomscripts
     script(src="ours/map.js")
