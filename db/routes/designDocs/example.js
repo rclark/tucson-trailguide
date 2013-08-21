@@ -1,4 +1,4 @@
-function ways(doc) {
+var ways = function (doc) {
     emit(doc._id, doc);    
 }
 
