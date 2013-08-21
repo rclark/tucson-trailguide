@@ -3,22 +3,7 @@ var vows = require('vows'),
     db = require('../db');
 
 vows.describe('The Database Configurer').addBatch({
-    'when asked to setup the routes database': {
-        topic: function () {
-            db.routes.setup(this.callback);
-        },
-        'does not fail': function (err, result) {
-            assert.isNull(err);
-        },
-        'returns a database': function (err, result) {
-            if (result) {
-                assert.isNotNull(result.get);
-            } else {
-                assert(false, 'result was undefined');
-            }
-        }
-    },
-    'creates design documents': {
+    /*'creates design documents': {
         topic: function () {
             var callback = this.callback,
                 fs = require('fs');
@@ -38,20 +23,32 @@ vows.describe('The Database Configurer').addBatch({
             assert.isNull(err);
             assert.isNotNull(doc);
         }
-    },
-    'returns a database': {
+    },*/
+    'when asked to setup the routes database': {
         topic: function () {
             var callback = this.callback;
             db.routes.setup(function (err, routes) {
-                callback(null, db.routes.db);    
+                if (err) {
+                    callback(err);
+                } else  {
+                    db.routes.db.get('_design/example', function (err, response) {
+                        callback(err, routes);
+                    });    
+                }
             });
         },
-        'when that database has already been set up': function (err, routes) {
+        'does not fail': function (err, result) {
+            assert.isNull(err);
+        },
+        'returns a database': function (err, routes) {
             if (routes) {
                 assert.isNotNull(routes.get);
             } else {
                 assert(false, 'routes was undefined');
             }
+        },
+        'writes design docs': function (err, routes) {
+            assert.isNull(err);
         }
     }
 }).export(module);
