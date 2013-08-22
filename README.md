@@ -5,6 +5,7 @@ tucson-trailguide
 
 You had best:
 - `gem install sass`
+- `brew install couchdb` (or something along those lines)
 
 Then you can:
 
