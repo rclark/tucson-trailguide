@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "vows test/* --spec",
+    "test": "NODE_ENV=testing vows test/* --spec",
     "prepublish": "git submodule init; git submodule update; node setup.js; node ./node_modules/bower/bin/bower install; node ./node_modules/grunt-cli/bin/grunt build",
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development node index.js"
