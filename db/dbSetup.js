@@ -3,7 +3,7 @@ module.exports = function (dbName, connection, callback) {
         events = require('events');
     
     function databaseExists(err, body) {        
-        if (err) { 
+        if (err) {
             callback(err);
         } else {
             if (_.contains(body, dbName)) {
@@ -18,7 +18,6 @@ module.exports = function (dbName, connection, callback) {
         if (err) {
             callback(err);
         } else {
-            
             var db = connection.use(dbName),
                 docs = require([__dirname, dbName, 'designDocs'].join('/')),
                 emitter = new events.EventEmitter(),               
@@ -57,9 +56,13 @@ module.exports = function (dbName, connection, callback) {
                 }
             });
             
-            docs.forEach(upsertDesignDoc);
+            if (docs.length === 0) {
+                callback(null, db);
+            } else {
+                docs.forEach(upsertDesignDoc);
+            }
         }
     }
-            
+
     connection.db.list(databaseExists);
 };

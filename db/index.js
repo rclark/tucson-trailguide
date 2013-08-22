@@ -7,13 +7,24 @@ var _ = require('underscore'),
         points: require('./points')(connection),
         segments: require('./segments')(connection),
         trailheads: require('./trailheads')(connection)
-    };
+    },
 
     setupFunctions = {
         setupAll: function (callback) {
+            var counter = 0;
+            
             callback = callback || function () {};
-            for (dbName in dbs) { dbs[dbName].setup(); }
-            callback(null, connection);
+            
+            function addOne(a,b) {                
+                counter++;
+                if (counter === _.keys(dbs).length) {
+                    callback(null, connection);
+                }
+            }
+            
+            _.keys(dbs).forEach(function (dbName) {
+                dbs[dbName].setup(addOne);
+            });
         },
         
         purge: function (callback) {
@@ -25,16 +36,16 @@ var _ = require('underscore'),
             emitter.on('dbRemoved', function () {
                 counter++;
                 if (counter === _.keys(dbs).length) {
-                    callback(null, connection);    
+                    callback(null, connection);
                 }
             });
             
-            for (name in dbs) {
+            _.keys(dbs).forEach(function (name) {
                 connection.db.destroy(name, function (err, result) {
-                    if (err) { callback(err); }
+                    if (err && err.status_code !== 404) { callback(err); }
                     emitter.emit('dbRemoved');
-                });    
-            }
+                });
+            });
         },
         
         loadInto: function (db, data, callback) {
@@ -54,7 +65,7 @@ var _ = require('underscore'),
             emitter.on('featureLoaded', function () {
                 counter++;
                 if (counter === data.length) {
-                    callback(null, db);    
+                    callback(null, db);
                 }
             });
             
@@ -66,6 +77,6 @@ var _ = require('underscore'),
             });
             
         }
-    }
+    };
 
 module.exports = _.extend(setupFunctions, dbs);

@@ -4,89 +4,64 @@ var vows = require('vows'),
     _ = require('underscore'),
     db = require('../db');
 
-vows.describe('The Database Configurer').addBatch({
+vows.describe('The Database Module').addBatch({
     
-    'when asked to setup the routes database': {
+    'CouchDB': {
         topic: function () {
-            var callback = this.callback;
-            db.routes.setup(function (err, routes) {
-                if (err) {
-                    callback(err);
-                } else  {
-                    db.routes.get('_design/example', function (err, response) {
-                        callback(err, routes);
-                    });    
+            db.purge(this.callback);
+        },
+        
+        'after a purge': {
+            topic: function (connection) {
+                connection.db.list(this.callback);
+            },
+            'is empty': function (err, dbNames) {
+                if (err) { assert.isNull(err); }
+                else {
+                    assert.equal(_.intersection(dbNames, ['routes', 'segments', 'points', 'trailheads']).length, 0);
                 }
-            });
-        },
-        'does not fail': function (err, result) {
-            assert.isNull(err);
-        },
-        'returns a database': function (err, routes) {
-            if (routes) {
-                assert.isNotNull(routes.get);
-            } else {
-                assert(false, 'routes was undefined');
-            }
-        },
-        'writes design docs': function (err, routes) {
-            assert.isNull(err);
-        }
-    },
-    
-    'when loading data into the routes database': {
-        topic: function () {
-            var callback = this.callback;
-            
-            fs.readFile('./test-data/route.json', function (err, content) {
-                db.loadInto(db.routes, JSON.parse(content), function (err, routes) {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        routes.list(callback);
+            },
+            'followed by setupAll,': {
+                topic: function (dbNames) {
+                    db.setupAll(this.callback);    
+                },
+                'contains': {
+                    topic: function (connection) {
+                        connection.db.list(this.callback);    
+                    },
+                    'all the right databases': function (err, dbNames) {
+                        assert.equal(_.intersection(dbNames, ['routes', 'segments', 'points', 'trailheads']).length, 4);    
                     }
-                });
-            });
-        },
-        'the expected records are loaded': function (err, result) {
-            assert.isNull(err);
-            assert.equal(result.rows.length, 3);
-        }
-    },
-    
-    'when asked to purge all the databases': {
-        topic: function () {
-            var callback = this.callback;
-            
-            function checkForDbs(err, connection) {
-                if (err) {
-                    callback(err);
-                } else {
-                    connection.db.list(callback);
+                },
+                'leaves the routes database': {
+                    topic: function (dbNames) {
+                        db.routes.get('_design/example', this.callback);
+                    },
+                    'with an expected design doc': function (err, doc) {
+                        assert.isNull(err);
+                    }
+                },
+                'and then trying to load data into routes,': {
+                    topic: function (connection) {
+                        var callback = this.callback;
+                        
+                        fs.readFile('./test-data/route.json', function (err, content) {
+                            db.loadInto(db.routes, JSON.parse(content), callback);
+                        });
+                    },
+                    'ends up with': {
+                        topic: function (routes) {
+                            routes.list(this.callback)
+                        },
+                        'the right number of records': function (err, result) {
+                            var docs = _.filter(result.rows, function (row) {
+                                return row.id.indexOf('_design') === -1;
+                            });
+                            assert.equal(docs.length, 3);
+                        }
+                    }
                 }
             }
-            
-            setTimeout(
-                function () { db.purge(checkForDbs); },
-                3000
-            );
-        },
-        'they all go away': function (err, result) {
-            assert.isNull(err);
-            assert.equal(_.intersection(result, ['routes','segments','points','trailheads']).length, 0);
         }
-    },
-    
-    'when asked to setup all the databases': {
-        topic: function () {
-            var callback = this.callback;
-            setTimeout(
-                function () { db.setupAll(callback); },
-                5000
-            );
-        },
-        'does not fail': function (err, result) {
-            assert.isNull(err);    
-        }
-    },
-});//.export(module);
+    }
+}).export(module);
