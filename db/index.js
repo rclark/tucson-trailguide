@@ -1,4 +1,5 @@
 var _ = require('underscore'),
+    events = require('events'),
     config = require('../configuration.js').dbConfig,
     connection = require('nano')(config.dbProtocol + '://' + config.dbHost + ':' + config.dbPort),
     dbs = {
@@ -16,10 +17,49 @@ var _ = require('underscore'),
         },
         
         purge: function (callback) {
+            var emitter = new events.EventEmitter(),
+                counter = 0;
+            emitter.on('dbRemoved', function () {
+                counter++;
+                if (counter === _.keys(dbs).length) {
+                    callback(null, connection);    
+                }
+            });
+            
             for (name in dbs) {
-                connection.db.destroy(name);    
+                connection.db.destroy(name, function (err, result) {
+                    if (err) { callback(err); }
+                    emitter.emit('dbRemoved');
+                });    
             }
-            callback(null, connection);
+        },
+        
+        loadInto: function (db, data, callback) {
+            var emitter = new events.EventEmitter(),
+                counter = 0;
+            
+            if (_.isObject(data) && data.type === "FeatureCollection") {
+                data = data.features;
+            }
+            
+            if (!_.isArray(data)) {
+                data = [data];
+            }
+            
+            emitter.on('featureLoaded', function () {
+                counter++;
+                if (counter === data.length) {
+                    callback(null, db);    
+                }
+            });
+            
+            data.forEach(function (feature) {
+                db.insert(feature, function (err, result) {
+                    if (err) callback(err);
+                    emitter.emit('featureLoaded');
+                });
+            });
+            
         }
     }
 

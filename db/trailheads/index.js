@@ -6,5 +6,5 @@ module.exports = function (connection) {
         require('./setup')(connection, callback);
     };
     
-    return _.extend({setup: setup}, connection.use('segments'));
+    return _.extend({setup: setup}, connection.use('trailheads'));
 };
