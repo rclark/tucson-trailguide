@@ -19,6 +19,9 @@ var _ = require('underscore'),
         purge: function (callback) {
             var emitter = new events.EventEmitter(),
                 counter = 0;
+            
+            callback = callback || function () {};
+            
             emitter.on('dbRemoved', function () {
                 counter++;
                 if (counter === _.keys(dbs).length) {
@@ -37,6 +40,8 @@ var _ = require('underscore'),
         loadInto: function (db, data, callback) {
             var emitter = new events.EventEmitter(),
                 counter = 0;
+            
+            callback = callback || function () {};
             
             if (_.isObject(data) && data.type === "FeatureCollection") {
                 data = data.features;
