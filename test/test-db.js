@@ -1,5 +1,6 @@
 var vows = require('vows'),
     assert = require('assert'),
+    _ = require('underscore'),
     db = require('../db');
 
 vows.describe('The Database Configurer').addBatch({
@@ -40,6 +41,28 @@ vows.describe('The Database Configurer').addBatch({
         },
         'does not fail': function (err, result) {
             assert.isNull(err);    
+        }
+    },
+    'when asked to purge all the databases': {
+        topic: function () {
+            var callback = this.callback;
+            
+            function checkForDbs(err, connection) {
+                if (err) {
+                    callback(err);
+                } else {
+                    connection.db.list(callback);
+                }
+            }
+            
+            setTimeout(
+                function () { db.purge(checkForDbs); },
+                3000
+            );
+        },
+        'they all go away': function (err, result) {
+            assert.isNull(err);
+            assert.equal(0, _.intersection(result, ['routes','segments','points','trailheads']));
         }
     }
 }).export(module);

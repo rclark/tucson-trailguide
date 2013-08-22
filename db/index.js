@@ -8,10 +8,19 @@ var _ = require('underscore'),
         trailheads: require('./trailheads')(connection)
     };
 
-function setupAll(callback) {
-    callback = callback || function () {};
-    for (dbName in dbs) { dbs[dbName].setup(); }
-    callback(null);
-}
+    setupFunctions = {
+        setupAll: function (callback) {
+            callback = callback || function () {};
+            for (dbName in dbs) { dbs[dbName].setup(); }
+            callback(null, connection);
+        },
+        
+        purge: function (callback) {
+            for (name in dbs) {
+                connection.db.destroy(name);    
+            }
+            callback(null, connection);
+        }
+    }
 
-module.exports = _.extend({setupAll: setupAll}, dbs);
+module.exports = _.extend(setupFunctions, dbs);
