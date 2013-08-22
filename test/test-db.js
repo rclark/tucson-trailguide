@@ -89,4 +89,4 @@ vows.describe('The Database Configurer').addBatch({
             assert.isNull(err);    
         }
     },
-}).export(module);
+});//.export(module);
