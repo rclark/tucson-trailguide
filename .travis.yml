@@ -9,3 +9,5 @@ notifications:
     urls:
       - http://dev.tucsontrailguide.com/update-hook
     on_failure: never
+services:
+  - couchdb

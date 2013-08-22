@@ -1,6 +1,11 @@
 extends base
 
 block body
-    .row
-        .columns.large-4 Four Columns
-        .columns.large-8 Eight Columns
+    .map-wrapper
+
+        #map.map
+        .map-sidebar
+            p Sidebar contents
+
+block bottomscripts
+    script(src="ours/map.js")

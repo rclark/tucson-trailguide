@@ -7,9 +7,13 @@
 @import "../../bower_components/foundation/scss/foundation/components/buttons";
 @import "../../bower_components/foundation/scss/foundation/components/forms";
 
+// My SCSS utils
+@import "scss-utils/src/all";
+
 // Universals
 @import "variables";
 @import "base";
 
 // Modules and pages
-@import "header"
+@import "map";
+@import "header";

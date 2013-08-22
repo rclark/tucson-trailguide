@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "vows test/* --spec",
-    "prepublish": "node setup.js; node ./node_modules/bower/bin/bower install; node ./node_modules/grunt-cli/bin/grunt build",
+    "test": "NODE_ENV=testing vows test/* --spec",
+    "prepublish": "git submodule init; git submodule update; node setup.js; node ./node_modules/bower/bin/bower install; node ./node_modules/grunt-cli/bin/grunt build",
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development node index.js",
     "update-listener": "node update-listener.js"
@@ -31,7 +31,10 @@
   },
   "dependencies": {
     "express": "~3.3.5",
-    "jade": "~0.34.1"
+    "jade": "~0.34.1",
+    "nano": "~4.1.1",
+    "underscore": "~1.5.1",
+    "optimist": "~0.6.0"
   },
   "devDependencies": {
     "vows": "~0.7.0",
@@ -45,6 +48,6 @@
     "grunt-cli": "~0.1.9",
     "grunt-exec": "~0.4.2",
     "jake": "~0.6.10",
-    "optimist": "~0.6.0"
+    "grunt-express-server": "~0.4.2"
   }
 }

@@ -1,17 +1,23 @@
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
     
-var argv = require('optimist')
-    .default({
-        updatePort: 2999,
-        updateStart: '',
-        updateStop: '',
-        gitUser: 'just',
-        gitRepo: 'a',
-        travisToken: 'fake',
-        serverPort: 3000
-    })
-    .argv;
+    argv = require('optimist')
+        .default({
+            updatePort: 2999,
+            updateStart: '',
+            updateStop: '',
+            gitUser: 'just',
+            gitRepo: 'a',
+            travisToken: 'fake',
+            serverPort: 3000
+        })
+        .argv,
+    
+    defaultDbConfig = {
+        'dbPort': 5984,
+        'dbHost': '127.0.0.1',
+        'dbProtocol': 'http'
+    };
 
 if (path.existsSync('defaults.json')) {
     data = JSON.parse(fs.readFileSync('defaults.json'));
@@ -23,14 +29,18 @@ var config = {
     serverConfig: {
         serverPort: argv.serverPort
     },
+    
     updates: {
         port: argv.updatePort,
         start: argv.updateStart,
         stop: argv.updateStop,
         auth: authTag(argv.gitUser, argv.gitRepo, argv.travisToken)
     },
+
+    dbConfig: defaultDbConfig,
+
     devScripts: [
-        '/their-js/leaflet/dist/leaflet-src.js'
+        '/not-ours/leaflet/dist/leaflet-src.js'
     ]
 };
 

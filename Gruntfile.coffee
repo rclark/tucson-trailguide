@@ -40,7 +40,7 @@ module.exports = (grunt) ->
           "src/scss/**/*.scss"
         ]
         tasks: ["style"]
-        
+
     exec:
       buildLeaflet:
         command: "cd bower_components/leaflet; npm install; node ../../node_modules/jake/bin/cli.js"

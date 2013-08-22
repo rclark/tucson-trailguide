@@ -6,18 +6,19 @@ var express = require('express'),
 
 app.set('view engine', 'jade');
 app.set('views', path.resolve(__dirname, '..', 'templates'));
+app.set('isDevelopment', app.get('env') !== 'production');
 app.use('/static', express.static(path.resolve(__dirname, '..', 'dist')));
-if (app.get('env') === 'development') {
-    app.use('/their-js', express.static(path.resolve(__dirname, '..', 'bower_components')));
-    app.use('/our-js', express.static(path.resolve(__dirname, '..', 'src/js')));    
+if (app.get('isDevelopment')) {
+    app.use('/not-ours', express.static(path.resolve(__dirname, '..', 'bower_components')));
+    app.use('/ours', express.static(path.resolve(__dirname, '..', 'src/js')));
 }
 
 app.use(function (req, res, next) {
     res.templateContext = {
-        dev: app.get('env') === 'development',
+        dev: app.get('isDevelopment'),
         devScripts: config.devScripts
     };
-    next();    
+    next();
 });
 
 app.get('/', routes.homePage);
@@ -28,8 +29,8 @@ module.exports = {
     start: function () {
         app.listen(config.serverConfig.serverPort);
     },
-    
+
     test: function (port) {
         app.listen(port);
-    }  
+    }
 };
