@@ -21,6 +21,15 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get('/js/main.js', function (req, res) {
+    res.setHeader('Content-type', 'text/javascript');
+    var js = 'var trailguide = {};';
+    js += 'trailguide.dbUrl = "';
+    js += config.dbConfig.dbProtocol + '://' + config.dbConfig.dbHost + ':' + config.dbConfig.dbPort;
+    js += '";';
+    res.send(js);
+});
+
 app.get('/', routes.homePage);
 
 app.get('/map', routes.mapPage);
