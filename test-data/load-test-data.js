@@ -8,9 +8,10 @@ var db = require('../db'),
         segments: fs.readFileSync('segment.json'),
         trailheads: fs.readFileSync('th.json')
     };
-
-db.setupAll(function (err, connection) {
-    _.keys(testData).forEach(function (dbName) {
-        db.loadInto(db[dbName], JSON.parse(testData[dbName]));    
-    });
+db.purge(function (err, whatever) {
+  db.setupAll(function (err, connection) {
+      _.keys(testData).forEach(function (dbName) {
+          db.loadInto(db[dbName], JSON.parse(testData[dbName]));    
+      });
+  });  
 });
