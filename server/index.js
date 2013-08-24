@@ -7,10 +7,10 @@ var express = require('express'),
 app.set('view engine', 'jade');
 app.set('views', path.resolve(__dirname, '..', 'templates'));
 app.set('isDevelopment', app.get('env') !== 'production');
-app.use('/static', express.static(path.resolve(__dirname, '..', 'dist')));
+app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist')));
 if (app.get('isDevelopment')) {
-    app.use('/not-ours', express.static(path.resolve(__dirname, '..', 'bower_components')));
-    app.use('/ours', express.static(path.resolve(__dirname, '..', 'src/js')));
+    app.use('/bower_components', express.static(path.resolve(__dirname, '..', 'bower_components')));
+    app.use('/src', express.static(path.resolve(__dirname, '..', 'src')));
 }
 
 app.use(function (req, res, next) {

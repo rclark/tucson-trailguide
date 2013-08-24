@@ -28,7 +28,7 @@ vows.describe('The Express.js server').addBatch({
         topic: function () {
             port++;
             require('../server').test(port);
-            request('http://localhost:' + port + '/static/main.css', this.callback);
+            request('http://localhost:' + port + '/dist/main.css', this.callback);
         },
         'returns a 200': function (err, response, body) {
             assert.equal(response.statusCode, 200);
@@ -48,7 +48,7 @@ vows.describe('The Express.js server').addBatch({
         topic: function () {
             port++;
             require('../server').test(port);
-            request('http://localhost:' + port + '/not-ours/leaflet/build/build.js', this.callback);
+            request('http://localhost:' + port + '/bower_components/leaflet/build/build.js', this.callback);
         },
         'returns a 200': function (err, response, body) {
             assert.equal(response.statusCode, 200);

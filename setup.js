@@ -1,6 +1,6 @@
 var fs = require('fs'),
     path = require('path'),
-    
+
     argv = require('optimist')
         .default({
             updatePort: 2999,
@@ -12,7 +12,7 @@ var fs = require('fs'),
             serverPort: 3000
         })
         .argv,
-    
+
     defaultDbConfig = {
         'dbPort': 5984,
         'dbHost': '127.0.0.1',
@@ -22,14 +22,14 @@ var fs = require('fs'),
 if (path.existsSync('defaults.json')) {
     data = JSON.parse(fs.readFileSync('defaults.json'));
     for (key in data) {
-        argv[key] = data[key];    
+        argv[key] = data[key];
     }
 }
 var config = {
     serverConfig: {
         serverPort: argv.serverPort
     },
-    
+
     updates: {
         port: argv.updatePort,
         start: argv.updateStart,
@@ -40,7 +40,8 @@ var config = {
     dbConfig: defaultDbConfig,
 
     devScripts: [
-        '/not-ours/leaflet/dist/leaflet-src.js'
+        'bower_components/leaflet/dist/leaflet-src.js',
+        'src/js/map.js'
     ]
 };
 

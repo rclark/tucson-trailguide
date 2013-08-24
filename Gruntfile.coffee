@@ -1,3 +1,5 @@
+config = require "./configuration.js"
+
 module.exports = (grunt) ->
   grunt.initConfig
 
@@ -8,12 +10,12 @@ module.exports = (grunt) ->
         options:
           lineNumbers: true
         files:
-          "src/css/main-unprefixed.css": "src/scss/main.scss"
+          "dist/main.css": "src/scss/main.scss"
 
     autoprefixer:
       dev:
         files:
-          "dist/main.css": "src/css/main-unprefixed.css"
+          "dist/main.css": "dist/main.css"
 
     cssmin:
       dist:
@@ -45,11 +47,22 @@ module.exports = (grunt) ->
       buildLeaflet:
         command: "cd bower_components/leaflet; npm install; node ../../node_modules/jake/bin/cli.js"
 
+    uglify:
+      dist:
+        files:
+          "dist/js-built.min.js": config.devScripts
+
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
+  grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-autoprefixer"
   grunt.loadNpmTasks "grunt-exec"
 
   grunt.registerTask "style", ["sass:dev", "autoprefixer:dev"]
-  grunt.registerTask "build", ["style", "exec:buildLeaflet", "cssmin:dist"]
+  grunt.registerTask "build", [
+    "style"
+    "exec:buildLeaflet"
+    "cssmin:dist"
+    "uglify:dist"
+  ]
