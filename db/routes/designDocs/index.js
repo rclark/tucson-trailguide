@@ -1,3 +1,4 @@
 module.exports = [
-    require('./example')
+    require('./example'),
+    require('../../designGeo')
 ];

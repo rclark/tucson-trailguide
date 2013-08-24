@@ -70,7 +70,7 @@ var _ = require('underscore'),
             });
             
             data.forEach(function (feature) {
-                db.insert(feature, function (err, result) {
+                db.insert(feature, feature.id, function (err, result) {
                     if (err) callback(err);
                     emitter.emit('featureLoaded');
                 });
