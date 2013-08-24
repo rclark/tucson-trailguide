@@ -1,5 +1,6 @@
 var express = require('express'),
     path = require('path'),
+    request = require('request'),
     config = require('../configuration'),
     routes = require('./routes'),
     app = express();
@@ -33,6 +34,14 @@ app.get('/js/main.js', function (req, res) {
 app.get('/', routes.homePage);
 
 app.get('/map', routes.mapPage);
+
+app.use('/db', function (req, res) {
+    request('http://localhost:5984' + req.path).pipe(res);
+});
+
+
+"http://localhost:5984/what/the/what"
+"http://localhost/db/what/the/what"
 
 module.exports = {
     start: function () {
