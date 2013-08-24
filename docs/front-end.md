@@ -26,3 +26,11 @@ The Grunt task `build` does the following:
 - Use the following prefixes:
   - `js-` designates a class to be used as a JS selector. *Do not apply any style rules to `js-` classes; conversely, do not use non-`js-` classes in JS.*
   - `m-` designates a modifier class. *Modifier classes have no rulesets applied to them except in combination with other classes.* For example, for a set of social-media links the class `m-twitter` would do nothing unless combined with the class `sociallink`, in which case it would apply a Twitter icon (contrasting with `m-facebook` and `m-instagram`). There should be no problem with namespace conflicts, no matter how vague the modifier classname (e.g. `m-left`), because modifier classes only have meaning in combination with other classes. 
+
+# Javascript
+
+## Referencing Scripts
+In `setup.js`, the array `devScripts` lists the scripts that should be loaded during development. A loop in `templates/base.jade` calls these.
+
+## Building Scripts
+The same array in `setup.js` is used by Grunt as the list of scripts to be concatenated and minified for production.
