@@ -3,20 +3,30 @@ trailguide.map = L.map('map').setView(['32.358648265262275', '-110.8163452148437
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/clarkdav.map-y00xtqe1/{z}/{x}/{y}.png')
   .addTo(trailguide.map);
 
-trailguide.urls = {
+trailguide.dataUrls = {
   trailheads: '/db/trailheads/_design/geo/_list/featureCollection/all',
+  segments: '/db/segments/_design/geo/_list/featureCollection/all',
   routes: '/db/routes/_design/geo/_list/featureCollection/all',
+  points: '/db/points/_design/geo/_list/featureCollection/all'
 };
 
-var addLayer = function(data) {
-  L.geoJson(data)
-    .addTo(trailguide.map);
+trailguide.addLayer = function(dataType) {
+  this.getLayerData = function() {
+    var settings = {
+      url: trailguide.dataUrls[dataType],
+      dataType: 'json',
+      success: this.addLayerToMap
+    };
+    $.ajax(settings);
+  };
+  this.addLayerToMap = function(data) {
+    L.geoJson(data).addTo(trailguide.map);
+  };
+  this.getLayerData();
 };
 
-var settings = {
-  url: trailguide.urls.trailheads,
-  crossDomain: true,
-  dataType: 'json',
-  success: addLayer
-};
-$.ajax(settings);
+trailguide.addLayer('trailheads');
+trailguide.addLayer('segments');
+trailguide.addLayer('routes');
+trailguide.addLayer('points');
+
