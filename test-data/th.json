@@ -1,1 +1,103 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"Name":"Faker #1"},"geometry":{"type":"Point","coordinates":[-110.869071,32.331619]},"id":"trailhead-1"},{"type":"Feature","properties":{"Name":"Faker #2"},"geometry":{"type":"Point","coordinates":[-110.861457,32.331143]},"id":"trailhead-2"},{"type":"Feature","properties":{"Name":"Esperero Faker"},"geometry":{"type":"Point","coordinates":[-110.816174,32.324336]},"id":"trailhead-3"},{"type":"Feature","properties":{"Name":"Finger Rock Trailhead"},"geometry":{"type":"Point","coordinates":[-110.909939,32.336946]},"id":"trailhead-4"},{"type":"Feature","properties":{"Name":"Pima Canyon Trailhead"},"geometry":{"type":"Point","coordinates":[-110.947929,32.35342]},"id":"trailhead-5"},{"type":"Feature","properties":{"Name":"Romero Trailhead"},"geometry":{"type":"Point","coordinates":[-110.924156,32.418236]},"id":"trailhead-6"},{"type":"Feature","properties":{"Name":"Faker #3"},"geometry":{"type":"Point","coordinates":[-110.922289,32.389655]},"id":"trailhead-7"}]}
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -110.86907100000001,
+          32.331619000000003
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-1",
+      "properties": {
+        "name": "Faker #1"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.861457,
+          32.331142999999997
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-2",
+      "properties": {
+        "name": "Faker #2"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.816174,
+          32.324336000000002
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-3",
+      "properties": {
+        "name": "Esperero Faker"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.90993899999999,
+          32.336945999999998
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-4",
+      "properties": {
+        "name": "Finger Rock Trailhead"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.947929,
+          32.35342
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-5",
+      "properties": {
+        "name": "Pima Canyon Trailhead"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.924156,
+          32.418236
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-6",
+      "properties": {
+        "name": "Romero Trailhead"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.92228900000001,
+          32.389654999999998
+        ],
+        "type": "Point"
+      },
+      "id": "trailhead-7",
+      "properties": {
+        "name": "Faker #3"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

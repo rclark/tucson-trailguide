@@ -1,1 +1,89 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"Name":"Finger Rock"},"geometry":{"type":"Point","coordinates":[-110.8963394165039,32.36546323597204]},"id":"poi-1"},{"type":"Feature","properties":{"Name":"La Ventana"},"geometry":{"type":"Point","coordinates":[-110.87076187133788,32.38133867508005]},"id":"poi-2"},{"type":"Feature","properties":{"Name":"Maiden Pools"},"geometry":{"type":"Point","coordinates":[-110.85834056138992,32.35292945601888]},"id":"poi-3"}]}
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -110.89633941650391,
+          32.365463235972037
+        ],
+        "type": "Point"
+      },
+      "id": "poi-1",
+      "properties": {
+        "name": "Finger Rock",
+        "description": "A rock that looks like a finger.",
+        "type": "rock formation",
+        "region": "Pusch Ridge Wilderness",
+        "segments": [
+          "segment-2"
+        ],
+        "photos": [
+          "photo-1",
+          "photo-2"
+        ],
+        "comments": [
+          "comment-2",
+          "comment-3"
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.87076187133788,
+          32.381338675080052
+        ],
+        "type": "Point"
+      },
+      "id": "poi-2",
+      "properties": {
+        "name": "La Ventana",
+        "description": "A rock that looks like a window.",
+        "type": "rock formation",
+        "region": "Pusch Ridge Wilderness",
+        "segments": [
+          "segment-4"
+        ],
+        "photos": [
+          "photo-3",
+          "photo-4"
+        ],
+        "comments": [
+          "comment-1",
+          "comment-3"
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -110.85834056138992,
+          32.352929456018877
+        ],
+        "type": "Point"
+      },
+      "id": "poi-3",
+      "properties": {
+        "name": "Maiden Pools",
+        "description": "Some pools that look like maidens.",
+        "type": "water feature",
+        "region": "Rocks and Rocks",
+        "segments": [
+          "segment-1"
+        ],
+        "photos": [
+          "photo-5",
+          "photo-4"
+        ],
+        "comments": [
+          "comment-2",
+          "comment-4"
+        ]
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}
