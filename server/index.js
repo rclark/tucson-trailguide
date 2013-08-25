@@ -25,9 +25,7 @@ app.use(function (req, res, next) {
 app.get('/js/main.js', function (req, res) {
     res.setHeader('Content-type', 'text/javascript');
     var js = 'var trailguide = {};';
-    js += 'trailguide.dbUrl = "';
-    js += config.dbConfig.dbProtocol + '://' + config.dbConfig.dbHost + ':' + config.dbConfig.dbPort;
-    js += '";';
+    js += 'L.Icon.Default.imagePath="/dist/images/";';
     res.send(js);
 });
 
@@ -36,12 +34,9 @@ app.get('/', routes.homePage);
 app.get('/map', routes.mapPage);
 
 app.use('/db', function (req, res) {
-    request('http://localhost:5984' + req.path).pipe(res);
+    var dbRequestUrl = config.dbConfig.dbProtocol + '://' + config.dbConfig.dbHost + ':' + config.dbConfig.dbPort + req.path
+    request(dbRequestUrl).pipe(res);
 });
-
-
-"http://localhost:5984/what/the/what"
-"http://localhost/db/what/the/what"
 
 module.exports = {
     start: function () {
