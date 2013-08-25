@@ -11,6 +11,7 @@
   ],
   "dependencies": {
     "foundation": "git://github.com/zurb/foundation.git#~4.3.1",
-    "leaflet": "~0.6.4"
+    "leaflet": "~0.6.4",
+    "jquery": "~2.0.3"
   }
 }

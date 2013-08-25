@@ -35,6 +35,7 @@ module.exports = (grunt) ->
           "dist/*.css",
           "templates/*.jade",
           "templates/**/*.jade"
+          "src/js/*.js"
         ]
       style:
         files: [
@@ -52,10 +53,20 @@ module.exports = (grunt) ->
         files:
           "dist/js-built.min.js": config.devScripts
 
+    copy:
+      dist:
+        files: [
+          expand: true
+          cwd: "bower_components/leaflet/dist/images/"
+          src: ["*"]
+          dest: "dist/images"
+        ]
+
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-autoprefixer"
   grunt.loadNpmTasks "grunt-exec"
 
