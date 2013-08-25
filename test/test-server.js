@@ -61,7 +61,7 @@ vows.describe('The Express.js server').addBatch({
             request('http://localhost:' + port + '/db/', this.callback);
         },
         'returns a 200': function (err, response, body) {
-            assert.equal(response.statusCode, 200);       
+            assert.equal(response.statusCode, 200);
         }
     },
     'when asked to proxy the creation of a database': {
@@ -88,7 +88,7 @@ vows.describe('The Express.js server').addBatch({
                 }, this.callback);
             },
             'returns a 200': function (err, response, body) {
-                assert.equal(response.statusCode, 200);    
+                assert.equal(response.statusCode, 200);
             }
         }
     }

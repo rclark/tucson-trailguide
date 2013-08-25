@@ -3,6 +3,7 @@
   "features": [
     {
       "type": "Feature",
+      "id": "route-1",
       "properties": {
         "name": "Pima to Finger Rock",
         "description": "A route from Pima Canyon to Finger Rock.",
@@ -18,6 +19,7 @@
     },
     {
       "type": "Feature",
+      "id": "route-2",
       "properties": {
         "name": "Finger Rock to Esperero",
         "description": "A route from Finger Rock to Esperero Canyon.",
@@ -33,6 +35,7 @@
     },
     {
       "type": "Feature",
+      "id": "route-3",
       "properties": {
         "name": "Romero",
         "description": "Up and down Romero Canyon.",

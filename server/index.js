@@ -33,7 +33,7 @@ app.get('/', routes.homePage);
 app.get('/map', routes.mapPage);
 
 app.use('/db', function (req, res) {
-    var dbRequestUrl = config.dbConfig.dbProtocol + '://' + config.dbConfig.dbHost + ':' + config.dbConfig.dbPort + req.path
+    var dbRequestUrl = config.dbConfig.dbProtocol + '://' + config.dbConfig.dbHost + ':' + config.dbConfig.dbPort + req.path;
     request({
         url: dbRequestUrl,
         qs: req.query,
@@ -43,6 +43,13 @@ app.use('/db', function (req, res) {
 });
 
 app.get('/:type/:id', routes.infoPage);
+
+app.use(function (err, req, res, next) {
+    var code = err.statusCode || err.status_code || err['status-code'] || 500;
+    res.statusCode = code;
+
+    res.send(err.message || err.reason || 'No error');
+});
 
 module.exports = {
     start: function () {
