@@ -42,6 +42,8 @@ app.use('/db', function (req, res) {
     }).pipe(res);
 });
 
+app.get('/:type/:id', routes.infoPage);
+
 module.exports = {
     start: function () {
         app.listen(config.serverConfig.serverPort);
