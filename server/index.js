@@ -25,7 +25,6 @@ app.use(function (req, res, next) {
 app.get('/js/main.js', function (req, res) {
     res.setHeader('Content-type', 'text/javascript');
     var js = 'var trailguide = {};';
-    js += 'L.Icon.Default.imagePath="/dist/images/";';
     res.send(js);
 });
 
