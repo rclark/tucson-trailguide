@@ -34,7 +34,12 @@ app.get('/map', routes.mapPage);
 
 app.use('/db', function (req, res) {
     var dbRequestUrl = config.dbConfig.dbProtocol + '://' + config.dbConfig.dbHost + ':' + config.dbConfig.dbPort + req.path
-    request(dbRequestUrl).pipe(res);
+    request({
+        url: dbRequestUrl,
+        qs: req.query,
+        method: req.method,
+        headers: req.headers
+    }).pipe(res);
 });
 
 module.exports = {

@@ -53,5 +53,43 @@ vows.describe('The Express.js server').addBatch({
         'returns a 200': function (err, response, body) {
             assert.equal(response.statusCode, 200);
         }
+    },
+    'when asked to proxy a database GET request': {
+        topic: function () {
+            port++;
+            require('../server').test(port);
+            request('http://localhost:' + port + '/db/', this.callback);
+        },
+        'returns a 200': function (err, response, body) {
+            assert.equal(response.statusCode, 200);       
+        }
+    },
+    'when asked to proxy the creation of a database': {
+        topic: function () {
+            port++;
+            require('../server').test(port);
+            request({
+                url: 'http://localhost:' + port + '/db/trail-test',
+                method: 'PUT',
+                json: true
+            }, this.callback);
+        },
+        'returns a 201': function (err, response, body) {
+            assert.equal(response.statusCode, 201);
+        },
+        'and then delete it': {
+            topic: function () {
+                port++;
+                require('../server').test(port);
+                request({
+                    url: 'http://localhost:' + port + '/db/trail-test',
+                    method: 'DELETE',
+                    json: true
+                }, this.callback);
+            },
+            'returns a 200': function (err, response, body) {
+                assert.equal(response.statusCode, 200);    
+            }
+        }
     }
 }).export(module);
