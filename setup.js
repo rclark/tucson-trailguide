@@ -40,8 +40,6 @@ var config = {
     dbConfig: defaultDbConfig,
 
     devScripts: [
-        'bower_components/leaflet/dist/leaflet-src.js',
-        'bower_components/jquery/jquery.min.js',
         'src/js/map.js'
     ]
 };
