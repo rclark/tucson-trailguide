@@ -16,14 +16,6 @@
         "region": "Pusch Ridge Wilderness",
         "segments": [
           "segment-2"
-        ],
-        "photos": [
-          "photo-1",
-          "photo-2"
-        ],
-        "comments": [
-          "comment-2",
-          "comment-3"
         ]
       },
       "type": "Feature"
@@ -44,14 +36,6 @@
         "region": "Pusch Ridge Wilderness",
         "segments": [
           "segment-4"
-        ],
-        "photos": [
-          "photo-3",
-          "photo-4"
-        ],
-        "comments": [
-          "comment-1",
-          "comment-3"
         ]
       },
       "type": "Feature"
@@ -72,14 +56,6 @@
         "region": "Rocks and Rocks",
         "segments": [
           "segment-1"
-        ],
-        "photos": [
-          "photo-5",
-          "photo-4"
-        ],
-        "comments": [
-          "comment-2",
-          "comment-4"
         ]
       },
       "type": "Feature"

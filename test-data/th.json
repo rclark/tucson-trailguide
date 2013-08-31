@@ -10,7 +10,8 @@
       },
       "id": "trailhead-1",
       "properties": {
-        "name": "Faker #1"
+        "name": "Faker #1",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     },
@@ -24,7 +25,8 @@
       },
       "id": "trailhead-2",
       "properties": {
-        "name": "Faker #2"
+        "name": "Faker #2",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     },
@@ -38,7 +40,8 @@
       },
       "id": "trailhead-3",
       "properties": {
-        "name": "Esperero Faker"
+        "name": "Esperero Faker",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     },
@@ -52,7 +55,8 @@
       },
       "id": "trailhead-4",
       "properties": {
-        "name": "Finger Rock Trailhead"
+        "name": "Finger Rock Trailhead",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     },
@@ -66,7 +70,8 @@
       },
       "id": "trailhead-5",
       "properties": {
-        "name": "Pima Canyon Trailhead"
+        "name": "Pima Canyon Trailhead",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     },
@@ -80,7 +85,8 @@
       },
       "id": "trailhead-6",
       "properties": {
-        "name": "Romero Trailhead"
+        "name": "Romero Trailhead",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     },
@@ -94,7 +100,8 @@
       },
       "id": "trailhead-7",
       "properties": {
-        "name": "Faker #3"
+        "name": "Faker #3",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       },
       "type": "Feature"
     }
