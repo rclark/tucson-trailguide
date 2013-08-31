@@ -46,6 +46,11 @@ var config = {
         'bower_components/jsts/lib/jsts.js',
         'bower_components/proj4js/dist/proj4.js',
 
+        'src/js/trailguide.js',
+        'src/js/geoUtils.js',
+        'src/js/geoUtils/project.js',
+        'src/js/geoUtils/geojson2jsts.js',
+        'src/js/models.js',
         'src/js/models/segment.js',
 
         'src/js/map.js'
