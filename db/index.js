@@ -40,8 +40,10 @@ var _ = require('underscore'),
                 }
             });
             
-            _.keys(dbs).forEach(function (name) {
-                connection.db.destroy(name, function (err, result) {
+            _.keys(dbs).forEach(function (key) {
+                var dbName = dbs[key].name;
+                
+                connection.db.destroy(dbName, function (err, result) {
                     if (err && err.status_code !== 404) { callback(err); }
                     emitter.emit('dbRemoved');
                 });

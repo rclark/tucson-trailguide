@@ -20,13 +20,13 @@ vows.describe('The Database Module').addBatch({
         },
 
         'after a purge': {
-            topic: function (connection) {
+            topic: function (err, connection) {
                 connection.db.list(this.callback);
             },
             'is empty': function (err, dbNames) {
                 if (err) { assert.isNull(err); }
                 else {
-                    assert.equal(_.intersection(dbNames, ['routes', 'segments', 'points', 'trailheads']).length, 0);
+                    assert.equal(_.intersection(dbNames, ['test-routes', 'test-segments', 'test-points', 'test-trailheads']).length, 0);
                 }
             },
             'followed by setupAll,': {
@@ -38,7 +38,7 @@ vows.describe('The Database Module').addBatch({
                         connection.db.list(this.callback);
                     },
                     'all the right databases': function (err, dbNames) {
-                        assert.equal(_.intersection(dbNames, ['routes', 'segments', 'points', 'trailheads']).length, 4);
+                        assert.equal(_.intersection(dbNames, ['test-routes', 'test-segments', 'test-points', 'test-trailheads']).length, 4);
                     }
                 },
                 'leaves the routes database': {
@@ -59,7 +59,7 @@ vows.describe('The Database Module').addBatch({
                     },
                     'ends up with': {
                         topic: function (routes) {
-                            routes.list(this.callback)
+                            routes.list(this.callback);
                         },
                         'the right number of records': function (err, result) {
                             var docs = _.filter(result.rows, function (row) {
@@ -67,7 +67,7 @@ vows.describe('The Database Module').addBatch({
                             });
                             assert.equal(docs.length, 3);
                         }
-                    },
+                    }/*,
                     'a single route\'s info': {
                         topic: function (routes) {
                             makeRequest('/routes/route-1', this.callback);
@@ -75,8 +75,8 @@ vows.describe('The Database Module').addBatch({
                         'can be accessed as html': function (err, result) {
                             assert.isNull(err);
                         }
-                    }
-                },
+                    }*/
+                }/*,
                 'and then loading segments,': {
                     topic: function (connection) {
                         var callback = this.callback;
@@ -160,7 +160,7 @@ vows.describe('The Database Module').addBatch({
                             assert.isNull(err);
                         }
                     }
-                }
+                }*/
             }
         }
     }
