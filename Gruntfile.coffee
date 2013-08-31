@@ -36,6 +36,7 @@ module.exports = (grunt) ->
           "templates/*.jade",
           "templates/**/*.jade"
           "src/js/*.js"
+          "src/js/**/*.js"
         ]
       style:
         files: [

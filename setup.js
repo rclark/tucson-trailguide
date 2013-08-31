@@ -40,6 +40,14 @@ var config = {
     dbConfig: defaultDbConfig,
 
     devScripts: [
+        'bower_components/lodash/dist/lodash.underscore.js',
+        'bower_components/backbone/backbone.js',
+        'bower_components/jsts/lib/javascript.util.js',
+        'bower_components/jsts/lib/jsts.js',
+        'bower_components/proj4js/dist/proj4.js',
+
+        'src/js/models/segment.js',
+
         'src/js/map.js'
     ]
 };

@@ -20,6 +20,7 @@ module.exports = {
 
         function displayInfo(err, body, response) {
             if (err) { next(err, req, res); return; }
+            _.extend(body, res.templateContext);
             res.render('info/' + req.params.type, body);
         }
 
