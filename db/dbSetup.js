@@ -1,8 +1,8 @@
-module.exports = function (dbName, connection, callback) {
+module.exports = function (dbName, designDocs, connection, callback) {
     var _ = require('underscore'),
         events = require('events');
     
-    function databaseExists(err, body) {        
+    function databaseExists(err, body) {
         if (err) {
             callback(err);
         } else {
@@ -19,8 +19,7 @@ module.exports = function (dbName, connection, callback) {
             callback(err);
         } else {
             var db = connection.use(dbName),
-                docs = require([__dirname, dbName, 'designDocs'].join('/')),
-                emitter = new events.EventEmitter(),               
+                emitter = new events.EventEmitter(),
                 counter = 0;
             
             function addDesignDoc(doc) {
@@ -49,17 +48,17 @@ module.exports = function (dbName, connection, callback) {
                 }
             }
                 
-            emitter.on('docAdded', function () { 
+            emitter.on('docAdded', function () {
                 counter++;
-                if (counter === docs.length) {
-                    callback(null, db);    
+                if (counter === designDocs.length) {
+                    callback(null, db);
                 }
             });
             
-            if (docs.length === 0) {
+            if (designDocs.length === 0) {
                 callback(null, db);
             } else {
-                docs.forEach(upsertDesignDoc);
+                designDocs.forEach(upsertDesignDoc);
             }
         }
     }

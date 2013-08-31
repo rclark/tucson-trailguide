@@ -1,10 +1,12 @@
-var _ = require('underscore');
+var _ = require('underscore'),
+    
+    dbName = process.env.NODE_ENV === 'testing' ? 'test-routes' : 'routes';
 
 module.exports = function (connection) {
     function setup(callback) {
         callback = callback || function () {};
-        require('./setup')(connection, callback);    
+        require('../dbSetup')(dbName, require('./designDocs'), connection, callback);    
     };
     
-    return _.extend({setup: setup}, connection.use('routes'));
+    return _.extend({setup: setup, name: dbName}, connection.use(dbName));
 };
