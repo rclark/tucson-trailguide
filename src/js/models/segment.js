@@ -8,10 +8,6 @@ var Segment = Backbone.Model.extend({
     return attributes;
   },
 
-  initialize: function() {
-
-  },
-
   coordinatesToMerc: function() {
     // Return the coordinates in Mercator projection.
     var source = new proj4.Proj('EPSG:4326'),
