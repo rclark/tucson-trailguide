@@ -1,53 +1,38 @@
-var Segment = Backbone.Model.extend({
+trailguide.models.Segment = Backbone.Model.extend({
 
   urlRoot: '/db/segments/',
 
-  parse: function(response, options) {
-    // Include properties and geometry in model's attributes.
-    var attributes = _.extend(response.properties, {geometry: response.geometry});
-    return attributes;
+  parse: function (response, options) {
+    var additional = {};
+    additional.geometry = response.geometry;
+    additional.projectedGeometry = trailguide.geoUtils.project(response.geometry);
+    additional.jstsGeometry = trailguide.geoUtils.geojson2jsts(additional.projectedGeometry);
+    additional.leafletLayer = this.leafletLayer();
+
+    return _.extend(additional, response.properties);
   },
 
-  coordinatesToMerc: function() {
-    // Return the coordinates in Mercator projection.
-    var source = new proj4.Proj('EPSG:4326'),
-        dest = new proj4.Proj('EPSG:3857'),
-        geoType = this.get('geometry').type,
-        coordinates = this.get('geometry').coordinates;
+  toJSON: function () {
+    var keysToRemove = [
+      'geometry',
+      'projectedGeometry',
+      'jstsGeometry',
+      'leafletLayer'
+    ];
 
-    var mercCoordinates = _.map(coordinates, function(point) {
-      var p = new proj4.Point(point[0], point[1]);
-      var newP = proj4.transform(source, dest, p);
-      return [newP.x, newP.y];
-    });
-    this.mercGeometry = {
-      'type': geoType,
-      'coordinates': mercCoordinates
-    };
-  },
-
-  geometryToJsts: function() {
-    // Return what jsts.io.GeoJSONReader reads from
-    // the model's geoJSON geomtry.
-    var reader = new jsts.io.GeoJSONReader();
-    this.jstsGeometry = reader.read(this.mercGeometry);
+    return {
+      type: "Feature",
+      properties: _.omit(this.attributes, keysToRemove),
+      geometry: this.get('geometry')
+    }
   },
 
   getDistance: function() {
-    var distance = this.jstsGeometry.getLength();
-    return distance;
-  }
+    return this.get('jstsGeometry').getLength();
+  },
 
-});
-
-var seg = new Segment({
-  id: 'segment-1'
-});
-
-seg.fetch({
-  success: function(model, res) {
-    model.coordinatesToMerc();
-    model.geometryToJsts();
-    $('#distance-val').html(model.getDistance());
+  leafletLayer: function (options) {
+    options = options || {};
+    return L.geoJson(this.toJSON(), options);
   }
 });
