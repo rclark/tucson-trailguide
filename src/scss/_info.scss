@@ -1,0 +1,60 @@
+// FEATURED PIC
+
+.info-fpic {
+  height: 10em;
+  position: relative;
+
+  img {
+    display: block;
+    @include u-absolute(0 n n 0);
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn-1 {
+
+  }
+}
+
+
+// MAP
+
+.info-map--c {
+  height: 13em;
+  position: relative;
+}
+
+.info-map {
+  @include u-absolute(0 n n 0);
+  height: 100%;
+  width: 100%;
+}
+
+
+// DETAILS
+
+.details {
+  @extend %u-list-unstyled;
+  li {
+    //border-top: 1px solid black;
+    &:nth-child(odd) {
+      background-color: lighgray;
+    }
+  }
+}
+
+.detail--label,
+.detail--content {
+  padding: 0.3em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.detail--label {
+  font-variant: small-caps;
+  font-weight: bold;
+  text-align: right;
+  text-transform: lowercase;
+  width: 7em;
+}
+

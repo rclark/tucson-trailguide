@@ -1,19 +1,95 @@
 extends ../base
 
 block body
-    p= properties.name
 
-    table
-        each value, key in properties
-            if typeof(value) === 'object'
-                each subval, subkey in value
-                    tr
-                        th= key + '.' + subkey
-                        td= subval
-            else
-                tr
-                    th= key
-                    td= value
+    h1.info--h= properties.name
 
-    block more
+    a(href="#").info--region Feature's region
 
+    .info-body
+
+        section.info-fpic
+            img
+            .overbottom-btn
+                a(href="#info-pics").btn-1 More Photos
+
+        section
+            p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+            button More
+
+        section.info-map--c
+            .info-map Map here
+            .overbottom-btn
+                button Explore interactive map
+
+        section
+            h2.info--h2 Details
+            ul.details
+                li
+                    .detail--label Distance
+                    .detail--content Information
+                li
+                    .detail--label Cumulative elevation gain
+                    .detail--content Information
+                li
+                    .detail--label Average accessibility
+                    .detail--content Information
+
+        section
+            h2.info--h2 Related Routes
+            ul.routes
+                each i in [1,2,3,4,5]
+                    li
+                        h3.route--h Route Name
+                        h4.route-label Trailheads
+                        ul.route--trailheads
+                            li Finger Rock
+                            li Comic Sans
+                        ul.route--details
+                            li 6.4 mi
+                            li 340 ft
+                        a(href="#").route--a More
+
+
+            button More
+            button Shrink
+
+        section#info-pics
+            ul.thumbs
+                each i in [1,2,3,4]
+                    li: a(href="#").thumbs--i
+                        img
+            button More
+            button Shrink
+
+        aside
+            h2.info--h2 Comments
+            ul.comments
+                each i in [1,2,3,4,5]
+                    li
+                        a(href="#").user-thumb
+                            .user-thumb--img
+                                img
+                            .user-thumb--caption Username
+                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+            button More
+            button Shrink
+
+
+
+
+        //
+            p= properties.name
+
+            table
+                each value, key in properties
+                    if typeof(value) === 'object'
+                        each subval, subkey in value
+                            tr
+                                th= key + '.' + subkey
+                                td= subval
+                    else
+                        tr
+                            th= key
+                            td= value

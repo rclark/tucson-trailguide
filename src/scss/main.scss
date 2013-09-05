@@ -1,19 +1,26 @@
 // Normalize and Foundation
 // add other Foundation imports to the bottom of this list
 @import "../../bower_components/foundation/scss/normalize";
-@import "foundation-settings"; // custom settings
+/* @import "foundation-settings"; // custom settings
 @import "../../bower_components/foundation/scss/foundation/components/global";
 @import "../../bower_components/foundation/scss/foundation/components/grid";
 @import "../../bower_components/foundation/scss/foundation/components/buttons";
-@import "../../bower_components/foundation/scss/foundation/components/forms";
+@import "../../bower_components/foundation/scss/foundation/components/forms"; */
 
 // My SCSS utils
 @import "scss-utils/src/all";
 
 // Universals
 @import "variables";
+@import "elements";
 @import "base";
 
 // Modules and pages
 @import "map";
 @import "header";
+@import "info";
+
+
+
+// DUMMIES -- REMOVE!
+@import "dummy-styles";

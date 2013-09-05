@@ -3,3 +3,19 @@
   padding: 0 1em;
   background: gray;
 }
+
+.site-logo {
+  float: left;
+}
+
+.nav {
+  float: right;
+  @extend %u-list-float;
+}
+
+.nav--i {
+  display: block;
+  li:not(:first-child) & {
+    margin-left: 2em;
+  }
+}

@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.info-body {
+  aside,
+  section {
+    border: 2px solid black;
+    margin: 0.5em 0.2em;
+    padding: 0.2em;
+  }
+}
+
+.info-fpic,
+.info-map,
+.thumbs--i img,
+.user-thumb--img img {
+  background: gray;
+  color: white;
+}
+
+.routes li {
+  background: lightgray;
+}
+
+.route--h {
+  font-size: 1em;
+  margin: 0;
+}
+
+p {
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

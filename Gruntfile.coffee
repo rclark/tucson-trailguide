@@ -54,6 +54,17 @@ module.exports = (grunt) ->
         files:
           "dist/js-built.min.js": config.devScripts
 
+    bgShell:
+      _defaults:
+        bg: true
+      couch:
+        cmd: "couchdb"
+      runDev:
+        cmd: "npm run-script dev"
+      gruntWatch:
+        cmd: "grunt watch"
+        bg: false
+
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
