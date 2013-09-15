@@ -51,9 +51,7 @@ var config = {
         'src/js/geoUtils/project.js',
         'src/js/geoUtils/geojson2jsts.js',
         'src/js/models.js',
-        'src/js/models/segment.js',
-
-        'src/js/map.js'
+        'src/js/models/segment.js'
     ]
 };
 
