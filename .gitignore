@@ -7,3 +7,4 @@ dist/*
 !dist/readme.md
 defaults.json
 erl_crash.dump
+npm-debug.log
