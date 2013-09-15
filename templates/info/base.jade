@@ -14,8 +14,14 @@ block body
                 a(href="#info-pics").btn-1 More Photos
 
         section
-            p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+            div
+                if properties.teaser
+                    !{properties.teaser}
+                else
+                    !{properties.description}
             button More
+            if properties.teaser
+                !{properties.description}
 
         section.info-map--c
             .info-map Map here
@@ -24,16 +30,7 @@ block body
 
         section
             h2.info--h2 Details
-            ul.details
-                li
-                    .detail--label Distance
-                    .detail--content Information
-                li
-                    .detail--label Cumulative elevation gain
-                    .detail--content Information
-                li
-                    .detail--label Average accessibility
-                    .detail--content Information
+            #details
 
         section
             h2.info--h2 Related Routes
@@ -76,6 +73,7 @@ block body
             button More
             button Shrink
 
+    block more
 
 
 

@@ -7,7 +7,6 @@ trailguide.models.Segment = Backbone.Model.extend({
     additional.geometry = response.geometry;
     additional.projectedGeometry = trailguide.geoUtils.project(response.geometry);
     additional.jstsGeometry = trailguide.geoUtils.geojson2jsts(additional.projectedGeometry);
-    additional.leafletLayer = this.leafletLayer();
 
     return _.extend(additional, response.properties);
   },
@@ -24,7 +23,7 @@ trailguide.models.Segment = Backbone.Model.extend({
       type: "Feature",
       properties: _.omit(this.attributes, keysToRemove),
       geometry: this.get('geometry')
-    }
+    };
   },
 
   getDistance: function() {
@@ -34,5 +33,12 @@ trailguide.models.Segment = Backbone.Model.extend({
   leafletLayer: function (options) {
     options = options || {};
     return L.geoJson(this.toJSON(), options);
+  },
+
+  details: function() {
+    var details = {
+      'distance': this.getDistance()
+    };
+    return { 'details': details };
   }
 });

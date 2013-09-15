@@ -42,6 +42,7 @@ var config = {
     devScripts: [
         'bower_components/lodash/dist/lodash.underscore.js',
         'bower_components/backbone/backbone.js',
+        'bower_components/jade/runtime.js',
         'bower_components/jsts/lib/javascript.util.js',
         'bower_components/jsts/lib/jsts.js',
         'bower_components/proj4js/dist/proj4.js',
@@ -50,8 +51,19 @@ var config = {
         'src/js/geoUtils.js',
         'src/js/geoUtils/project.js',
         'src/js/geoUtils/geojson2jsts.js',
+
+        // models
         'src/js/models.js',
-        'src/js/models/segment.js'
+        'src/js/models/segment.js',
+
+        // view templates
+        'src/js/templates.js',
+        'src/js/templates/details.js',
+
+        // views
+        'src/js/views.js',
+        'src/js/views/details.js'
+
     ]
 };
 

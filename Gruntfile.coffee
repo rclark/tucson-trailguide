@@ -27,6 +27,23 @@ module.exports = (grunt) ->
             "dist/main.css"
           ]
 
+    jade:
+      views:
+        options:
+          client: true
+          namespace: "trailguide.templates"
+          processName: (filename) ->
+            splitPath = filename.split "/"
+            splitName = splitPath[2].split "."
+            return splitName[0]
+        files: [
+          expand: true
+          cwd: "templates/views"
+          src: ["*.jade"]
+          dest: "src/js/templates"
+          ext: ".js"
+        ]
+
     watch:
       livereload:
         options:
@@ -44,6 +61,9 @@ module.exports = (grunt) ->
           "src/scss/**/*.scss"
         ]
         tasks: ["style"]
+      viewTemplates:
+        files: ["templates/views/*.jade"]
+        tasks: ["jade:views"]
 
     exec:
       buildLeaflet:
@@ -72,6 +92,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-autoprefixer"
   grunt.loadNpmTasks "grunt-exec"
 
