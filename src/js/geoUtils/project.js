@@ -22,20 +22,14 @@ trailguide.geoUtils.project = function (geoJsonGeometry, sourceProj, destProj) {
       mercCoordinates = projectLine(originalCoords);
       break;
     case "MultiLineString":
-      mercCoordinates = _.map(originalCoords, function (line) {
-        return projectLine(line);
-      });
+      mercCoordinates = _.map(originalCoords, projectLine);
       break;
     case "Polygon":
-      mercCoordinates = _.map(originalCoords, function (line) {
-        return projectLine(line);
-      });
+      mercCoordinates = _.map(originalCoords, projectLine);
       break;
     case "MultiPolygon":
       mercCoordinates = _.map(originalCoords, function (polygon) {
-        return _.map(polygon, function (line) {
-          return projectLine(line);
-        });
+        return _.map(polygon, projectLine);
       });
       break;
   }
