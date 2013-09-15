@@ -1,3 +1,6 @@
-[submodule "src/scss/scss-utils"]
-	path = src/scss/scss-utils
-	url = https://github.com/davidtheclark/scss-utils.git
+[submodule "style/scss/scut"]
+	path = style/scss/scut
+	url = https://github.com/davidtheclark/scut.git
+[submodule "src/scss/scut"]
+	path = src/scss/scut
+	url = https://github.com/davidtheclark/scut.git

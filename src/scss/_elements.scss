@@ -9,7 +9,7 @@ BUTTONS
 }
 
 .overbottom-btn {
-  @include u-absolute(n 1em 1em n);
+  @include scut-absolute(n 1em 1em n);
   z-index: 5;
   text-align: center;
 }
@@ -20,7 +20,7 @@ ROUTE LIST
 ==========================*/
 
 .routes {
-  @extend %u-list-unstyled;
+  @extend %scut-list-unstyled;
   & > li {
     margin-top: 0.5em;
     &:first-child {
@@ -41,11 +41,11 @@ ROUTE LIST
 
 .route--trailheads {
   display: inline;
-  @extend %u-list-comma;
+  @extend %scut-list-comma;
 }
 
 .route--details {
-  @extend %u-list-inline;
+  @extend %scut-list-inline;
   li {
     margin-left: 1em;
     &:first-child {
@@ -60,7 +60,7 @@ THUMBNAILS
 ==========================*/
 
 .thumbs {
-  @extend %u-list-float;
+  @extend %scut-list-floated;
   li {
     margin-bottom: 1%;
     margin-right: 1%;
@@ -78,7 +78,7 @@ THUMBNAILS
   position: relative;
   img {
     display: block;
-    @include u-absolute(0 n n 0);
+    @include scut-absolute(0 n n 0);
     width: 100%;
     height: 100%;
   }
@@ -90,7 +90,7 @@ COMMENTS
 ==========================*/
 
 .comments {
-  @extend %u-list-unstyled;
+  @extend %scut-list-unstyled;
 
   li {
     border-top: 1px solid black;
@@ -123,7 +123,7 @@ USER THUMBNAIL
   position: relative;
   & > img {
     display: block;
-    @include u-absolute(0 n n 0);
+    @include scut-absolute(0 n n 0);
     height: 100%;
     width: 100%;
   }

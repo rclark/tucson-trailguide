@@ -1,5 +1,5 @@
 .site-header {
-  @include u-vcenter-lh($header-y);
+  @include scut-vcenter-lh($header-y);
   padding: 0 1em;
   background: gray;
 }
@@ -10,7 +10,7 @@
 
 .nav {
   float: right;
-  @extend %u-list-float;
+  @extend %scut-list-floated;
 }
 
 .nav--i {
