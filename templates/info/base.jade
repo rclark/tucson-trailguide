@@ -17,10 +17,10 @@ block body
             div
                 if properties.teaser
                     !{properties.teaser}
-                else
+                else if properties.description
                     !{properties.description}
             button More
-            if properties.teaser
+            if properties.teaser && properties.description
                 !{properties.description}
 
         section.info-map--c

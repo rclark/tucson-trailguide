@@ -30,6 +30,21 @@ trailguide.models.Segment = Backbone.Model.extend({
     return this.get('jstsGeometry').getLength();
   },
 
+  getEndpoints: function() {
+    var coords = this.get('geometry').coordinates;
+    endpoints = [coords[0], coords[coords.length - 1]];
+    return endpoints;
+  },
+
+  getAdjacentTrailheads: function() {
+
+  },
+
+  getAdjacentSegments: function() {
+    var url = 'db/segments/_design/geo/_view/endpoints?keys=' + this.getEndpoints() + '';
+
+  },
+
   leafletLayer: function (options) {
     options = options || {};
     return L.geoJson(this.toJSON(), options);
@@ -39,6 +54,17 @@ trailguide.models.Segment = Backbone.Model.extend({
     var details = {
       'distance': this.getDistance()
     };
+
+    var pois = this.get('pois') || false;
+    if (pois) {
+      details.pois = pois;
+    }
+
+    var accessibility = this.get('accessibility') || false;
+    if (accessibility) {
+      details.accessibility = accessibility;
+    }
+
     return { 'details': details };
   }
 });

@@ -1,5 +1,5 @@
 var big = new trailguide.models.Segment({
-  id: "segment-1"
+  id: "segment-2"
 });
 
 big.fetch({
