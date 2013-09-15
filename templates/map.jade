@@ -6,3 +6,9 @@ block body
         #map.map
         .map-sidebar
             p Sidebar contents
+
+block bottomscripts
+  if dev
+    script(src="/src/js/map.js")
+  else
+    script(src="/dist/map-built.min.js")

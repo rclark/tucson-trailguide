@@ -53,6 +53,9 @@ module.exports = (grunt) ->
       dist:
         files:
           "dist/js-built.min.js": config.devScripts
+      map:
+        files:
+          "dist/map-built.min.js": ["src/js/map.js"]
 
     bgShell:
       _defaults:
