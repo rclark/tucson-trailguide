@@ -19,7 +19,7 @@ var fs = require('fs'),
         'dbProtocol': 'http'
     };
 
-if (path.existsSync('defaults.json')) {
+if (fs.existsSync('defaults.json')) {
     data = JSON.parse(fs.readFileSync('defaults.json'));
     for (key in data) {
         argv[key] = data[key];
