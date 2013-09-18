@@ -1,3 +1,4 @@
 module.exports = [
-    require('../../designGeo')
+    require('../../designGeo'),
+    require('./trailheads')
 ];

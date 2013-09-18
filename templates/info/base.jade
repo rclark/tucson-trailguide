@@ -72,22 +72,3 @@ block body
 
             button More
             button Shrink
-
-    block more
-
-
-
-        //
-            p= properties.name
-
-            table
-                each value, key in properties
-                    if typeof(value) === 'object'
-                        each subval, subkey in value
-                            tr
-                                th= key + '.' + subkey
-                                td= subval
-                    else
-                        tr
-                            th= key
-                            td= value

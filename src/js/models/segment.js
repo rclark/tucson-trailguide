@@ -39,12 +39,37 @@ trailguide.models.Segment = Backbone.Model.extend({
   getAdjacentTrailheads: function () {
     // get any trailheads corresponding with
     // this segment's endpoints
+    $.ajax({
+      url: '/db/trailheads/_design/trailheads/_view/coords?keys=' + JSON.stringify(this.getEndpoints()),
+      dataType: 'json',
+      success: function (response) {
+        console.log(response.rows);
+      }
+    });
   },
 
-  getAdjacentSegments: function () {
+  getAdjacentSegments: function (callback) {
     // get any other segments corresponding with
     // this segment's endpoints
-    var url = 'db/segments/_design/geo/_view/endpoints?keys=' + this.getEndpoints();
+    $.ajax({
+      url: '/db/segments/_design/segments/_view/endpoints?keys=' + JSON.stringify(this.getEndpoints()),
+      dataType: 'json',
+      success: function (response) {
+        var ids = _.map(response.rows, function (row) {
+          return row.id;
+        });
+        
+        ids = _.uniq(ids);
+        
+        ids = _.reject(ids, function (id) {
+          return id === trailguide.pages.segmentId;  
+        });
+        
+        callback(_.map(ids, function (id) {
+          return trailguide.models.segment(id);
+        }));
+      }
+    });
   },
 
   getPOIs: function() {
@@ -54,6 +79,13 @@ trailguide.models.Segment = Backbone.Model.extend({
 
   getRelatedRoutes: function () {
     // get any routes that include this segment
+    $.ajax({
+      url: '/db/routes/_design/routes/_view/segments?key="' + this.id + '"',
+      dataType: 'json',
+      success: function (response) {
+        console.log(response.rows);  
+      }
+    });
   },
 
   leafletLayer: function (options) {
@@ -81,3 +113,7 @@ trailguide.models.Segment = Backbone.Model.extend({
     return { 'details': details };
   }
 });
+
+trailguide.models.segment = function(segmentId) {
+    return new trailguide.models.Segment({ id: segmentId });
+};

@@ -35,7 +35,8 @@
     "nano": "~4.1.1",
     "underscore": "~1.5.1",
     "optimist": "~0.6.0",
-    "request": "~2.27.0"
+    "request": "~2.27.0",
+    "connect-auth": "~0.6.1"
   },
   "devDependencies": {
     "vows": "~0.7.0",

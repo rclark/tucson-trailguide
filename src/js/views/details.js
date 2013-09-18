@@ -1,4 +1,4 @@
-trailguide.views.details = Backbone.View.extend({
+trailguide.views.Details = Backbone.View.extend({
 
   template: trailguide.templates.details,
 
@@ -8,3 +8,7 @@ trailguide.views.details = Backbone.View.extend({
   }
 
 });
+
+trailguide.views.details = function (options) {
+  return new trailguide.views.Details(options);  
+};

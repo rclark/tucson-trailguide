@@ -3,6 +3,7 @@ var express = require('express'),
     request = require('request'),
     config = require('../configuration'),
     routes = require('./routes'),
+    auth = require('./auth'),
     app = express();
 
 app.set('view engine', 'jade');
@@ -44,7 +45,14 @@ app.use('/db', function (req, res) {
 
 app.get('/:type/:id', routes.infoPage);
 
+app.get('/sign-up', auth.signUp);
+
+app.get('/sign-in', auth.signIn);
+
+app.get('/sign-out', auth.signOut);
+
 app.use(function (err, req, res, next) {
+  console.log('error');
     var code = err.statusCode || err.status_code || err['status-code'] || 500;
     res.statusCode = code;
 

@@ -55,6 +55,10 @@ var config = {
         // models
         'src/js/models.js',
         'src/js/models/segment.js',
+      
+        // collections
+        'src/js/collections.js',
+        'src/js/collections/segments.js',
 
         // view templates
         'src/js/templates.js',
@@ -62,8 +66,10 @@ var config = {
 
         // views
         'src/js/views.js',
-        'src/js/views/details.js'
-
+        'src/js/views/details.js',
+        
+        // page namespace
+        'src/js/pages.js'
     ]
 };
 
