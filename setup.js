@@ -51,6 +51,8 @@ var config = {
         'src/js/geoUtils.js',
         'src/js/geoUtils/project.js',
         'src/js/geoUtils/geojson2jsts.js',
+        'src/js/httpUtils.js',
+        'src/js/httpUtils/json.js',
 
         // models
         'src/js/models.js',
