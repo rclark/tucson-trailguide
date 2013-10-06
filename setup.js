@@ -55,6 +55,7 @@ var config = {
         'src/js/httpUtils.js',
         'src/js/httpUtils/json.js',
         'src/js/httpUtils/fetchAll.js',
+        'src/js/httpUtils/view.js',
 
         // models
         'src/js/models.js',

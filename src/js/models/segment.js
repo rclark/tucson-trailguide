@@ -1,10 +1,3 @@
-function pluckValues (url, callback) {
-  trailguide.httpUtils.json(url, function (err, response) {
-    var result = _.pluck(response.rows, 'value');
-    callback(null, result);
-  });
-}
-
 trailguide.models.Segment = Backbone.Model.extend({
 
   urlRoot: '/db/segments/',
@@ -44,15 +37,17 @@ trailguide.models.Segment = Backbone.Model.extend({
   },
 
   trailheadsDetails: function (callback) {
-    // Get any trailheads that share
-    // this segment's endpoints.
-    var url = '/db/trailheads/_design/trailheads/_view/coords?keys=' + JSON.stringify(this.getEndpoints());
-    pluckValues(url, callback);
+    var params = {
+      'keys': this.getEndpoints()
+    };
+    trailguide.httpUtils.view('trailheads', 'trailheads', 'coords', params, callback);
   },
 
   poisDetails: function (pois, callback) {
-    var url = '/db/points/_design/points/_view/ids?keys=' + JSON.stringify(pois);
-    pluckValues(url, callback);
+    var params = {
+      'ids': pois
+    };
+    trailguide.httpUtils.view('points', 'points', 'ids', params, callback);
   },
 
   getAdjacentSegments: function (callback) {
@@ -104,6 +99,7 @@ trailguide.models.Segment = Backbone.Model.extend({
       details.accessibility = accessibility;
     }
 
+    // Add async details (the ones that need fetching).
     async.parallel([
       function addTrailheads (callback) {
         // Add adjacent trailheads.
