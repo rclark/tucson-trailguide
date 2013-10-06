@@ -3,8 +3,11 @@ p Details go here.
 each value, key in details
   dl
     dt= key
-    if typeof value === array
+    if typeof value === "object"
       each v in value
-        dd= v
+        if v.id
+          dd: a(href="/#{key}/#{v.id}")= v.name
+        else
+          dd= v
     else
       dd= value

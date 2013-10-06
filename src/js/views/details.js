@@ -3,15 +3,13 @@ trailguide.views.Details = Backbone.View.extend({
   template: trailguide.templates.details,
 
   render: function() {
-    var details = { 'details': '' };
-    this.model.details(function (err, response) {
+    var self = this,
+        details = { 'details': '' };
+    self.model.details(function (err, response) {
       details.details = response;
+      self.$el.append(self.template(details));
     });
-
-    // Prepare trailheads for template.
-
-    this.$el.append(this.template(details));
-    return this;
+    return self;
   }
 
 });

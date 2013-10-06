@@ -1,3 +1,10 @@
+function pluckValues (url, callback) {
+  trailguide.httpUtils.json(url, function (err, response) {
+    var result = _.pluck(response.rows, 'value');
+    callback(null, result);
+  });
+}
+
 trailguide.models.Segment = Backbone.Model.extend({
 
   urlRoot: '/db/segments/',
@@ -40,13 +47,13 @@ trailguide.models.Segment = Backbone.Model.extend({
     // Get any trailheads that share
     // this segment's endpoints.
     var url = '/db/trailheads/_design/trailheads/_view/coords?keys=' + JSON.stringify(this.getEndpoints());
-    trailguide.httpUtils.json(url, function (err, response) {
-      var trailheads = _.pluck(response.rows, 'value');
-      callback(null, trailheads);
-    });
+    pluckValues(url, callback);
   },
 
-
+  poisDetails: function (pois, callback) {
+    var url = '/db/points/_design/points/_view/ids?keys=' + JSON.stringify(pois);
+    pluckValues(url, callback);
+  },
 
   getAdjacentSegments: function (callback) {
     // Get any other segments corresponding with
@@ -69,12 +76,6 @@ trailguide.models.Segment = Backbone.Model.extend({
     });
   },
 
-  getPOIs: function() {
-    // Get POIs associated with this segment.
-    var poiIDs = this.get('pois');
-    return poiIDs;
-  },
-
   getRelatedRoutes: function () {
     // Get any routes that include this segment.
     var url = '/db/routes/_design/routes/_view/segments?key="' + this.id + '"';
@@ -91,7 +92,8 @@ trailguide.models.Segment = Backbone.Model.extend({
   details: function (callback) {
     // Prepare the details object for
     // this segment's view.
-    var details = {};
+    var self = this,
+        details = {};
 
     // Add distance
     details.distance = this.getDistance();
@@ -102,19 +104,34 @@ trailguide.models.Segment = Backbone.Model.extend({
       details.accessibility = accessibility;
     }
 
-    // Add adjacent trailheads.
-    this.trailheadsDetails(function (err, response) {
-      details.trailheads = response;
+    async.parallel([
+      function addTrailheads (callback) {
+        // Add adjacent trailheads.
+        self.trailheadsDetails(function (err, response) {
+          details.trailheads = _.extend(response, {
+            type: 'trailheads',
+          });
+          callback(null, null);
+        });
+      },
+      function addPois (callback) {
+        // Add POIs.
+        var pois = self.get('pois');
+        if (pois) {
+          self.poisDetails(pois, function (err, response) {
+            details.places = _.extend(response, {
+              type: 'points'
+            });
+            callback(null, null);
+          });
+        } else {
+          callback(null, null);
+        }
+      }
+    ], function (err, results) {
+      // Return
+      callback(null, details);
     });
-
-    // Add POIs.
-    var pois = this.getPOIs();
-    if (pois) {
-      details.pois = pois;
-    }
-
-    // Return
-    callback(null, details);
 
   }
 });

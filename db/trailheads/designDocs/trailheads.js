@@ -1,5 +1,9 @@
 var coords = function (doc) {
-    emit(doc.geometry.coordinates, doc._id);
+  var props = {
+    id: doc._id,
+    name: doc.properties.name
+  };
+  emit(doc.geometry.coordinates, props);
 };
 
 module.exports = {

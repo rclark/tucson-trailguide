@@ -5,7 +5,7 @@ this["trailguide"]["templates"]["details"] = function anonymous(locals) {
 jade.debug = [{ lineno: 1, filename: "templates/views/details.jade" }];
 try {
 var buf = [];
-var locals_ = (locals || {}),details = locals_.details,array = locals_.array;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
+var locals_ = (locals || {}),details = locals_.details;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
 buf.push("<p>");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
@@ -35,7 +35,7 @@ jade.debug.shift();
 buf.push("</dt>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 6, filename: jade.debug[0].filename });
-if ( typeof value === array)
+if ( typeof value === "object")
 {
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
@@ -49,10 +49,34 @@ jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
+if ( v.id)
+{
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<dd>");
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<a" + (jade.attrs({ 'href':("/" + (key) + "/" + (v.id) + "") }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = v.name) ? "" : jade.interp)));
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.shift();
+buf.push("</a>");
+jade.debug.shift();
+jade.debug.shift();
+buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
+else
+{
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
 buf.push("<dd>" + (jade.escape(null == (jade.interp = v) ? "" : jade.interp)));
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.shift();
 buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
 jade.debug.shift();
 jade.debug.shift();
     }
@@ -64,10 +88,34 @@ jade.debug.shift();
 
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
+if ( v.id)
+{
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<dd>");
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<a" + (jade.attrs({ 'href':("/" + (key) + "/" + (v.id) + "") }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = v.name) ? "" : jade.interp)));
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.shift();
+buf.push("</a>");
+jade.debug.shift();
+jade.debug.shift();
+buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
+else
+{
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
 buf.push("<dd>" + (jade.escape(null == (jade.interp = v) ? "" : jade.interp)));
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.shift();
 buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
 jade.debug.shift();
 jade.debug.shift();
     }
@@ -80,8 +128,8 @@ jade.debug.shift();
 }
 else
 {
-jade.debug.unshift({ lineno: 10, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 10, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
 buf.push("<dd>" + (jade.escape(null == (jade.interp = value) ? "" : jade.interp)));
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.shift();
@@ -112,7 +160,7 @@ jade.debug.shift();
 buf.push("</dt>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 6, filename: jade.debug[0].filename });
-if ( typeof value === array)
+if ( typeof value === "object")
 {
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
@@ -126,10 +174,34 @@ jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
+if ( v.id)
+{
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<dd>");
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<a" + (jade.attrs({ 'href':("/" + (key) + "/" + (v.id) + "") }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = v.name) ? "" : jade.interp)));
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.shift();
+buf.push("</a>");
+jade.debug.shift();
+jade.debug.shift();
+buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
+else
+{
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
 buf.push("<dd>" + (jade.escape(null == (jade.interp = v) ? "" : jade.interp)));
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.shift();
 buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
 jade.debug.shift();
 jade.debug.shift();
     }
@@ -141,10 +213,34 @@ jade.debug.shift();
 
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
+if ( v.id)
+{
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<dd>");
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
+buf.push("<a" + (jade.attrs({ 'href':("/" + (key) + "/" + (v.id) + "") }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = v.name) ? "" : jade.interp)));
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.shift();
+buf.push("</a>");
+jade.debug.shift();
+jade.debug.shift();
+buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
+else
+{
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
 buf.push("<dd>" + (jade.escape(null == (jade.interp = v) ? "" : jade.interp)));
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.shift();
 buf.push("</dd>");
+jade.debug.shift();
+jade.debug.shift();
+}
 jade.debug.shift();
 jade.debug.shift();
     }
@@ -157,8 +253,8 @@ jade.debug.shift();
 }
 else
 {
-jade.debug.unshift({ lineno: 10, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 10, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
 buf.push("<dd>" + (jade.escape(null == (jade.interp = value) ? "" : jade.interp)));
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.shift();
