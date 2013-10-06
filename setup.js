@@ -46,6 +46,7 @@ var config = {
         'bower_components/jsts/lib/javascript.util.js',
         'bower_components/jsts/lib/jsts.js',
         'bower_components/proj4js/dist/proj4.js',
+        'bower_components/async/lib/async.js',
 
         'src/js/trailguide.js',
         'src/js/geoUtils.js',
@@ -53,6 +54,7 @@ var config = {
         'src/js/geoUtils/geojson2jsts.js',
         'src/js/httpUtils.js',
         'src/js/httpUtils/json.js',
+        'src/js/httpUtils/fetchAll.js',
 
         // models
         'src/js/models.js',
