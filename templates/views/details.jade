@@ -3,4 +3,8 @@ p Details go here.
 each value, key in details
   dl
     dt= key
-    dd= value
+    if typeof value === array
+      each v in value
+        dd= v
+    else
+      dd= value

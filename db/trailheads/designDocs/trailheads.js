@@ -1,6 +1,6 @@
 var coords = function (doc) {
-    emit(doc.geometry.coordinates, doc.properties);
-}
+    emit(doc.geometry.coordinates, doc._id);
+};
 
 module.exports = {
     _id: "_design/trailheads",

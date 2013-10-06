@@ -77,29 +77,16 @@ module.exports = (grunt) ->
         files:
           "dist/map-built.min.js": ["src/js/map.js"]
 
-    bgShell:
-      _defaults:
-        bg: true
-      couch:
-        cmd: "couchdb"
-      runDev:
-        cmd: "npm run-script dev"
-      gruntWatch:
-        cmd: "grunt watch"
-        bg: false
-
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-autoprefixer"
-  grunt.loadNpmTasks "grunt-exec"
 
   grunt.registerTask "style", ["sass:dev", "autoprefixer:dev"]
   grunt.registerTask "build", [
     "style"
-    "exec:buildLeaflet"
     "cssmin:dist"
     "uglify:dist"
   ]

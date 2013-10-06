@@ -36,46 +36,50 @@ trailguide.models.Segment = Backbone.Model.extend({
     return endpoints;
   },
 
-  getAdjacentTrailheads: function () {
-    // get any trailheads corresponding with
-    // this segment's endpoints
+  trailheadsDetails: function (callback) {
+    // Get any trailheads that share
+    // this segment's endpoints.
     var url = '/db/trailheads/_design/trailheads/_view/coords?keys=' + JSON.stringify(this.getEndpoints());
     trailguide.httpUtils.json(url, function (err, response) {
-      console.log(response.rows);
+      var trailheads = _.pluck(response.rows, 'value');
+      callback(null, trailheads);
     });
   },
 
+
+
   getAdjacentSegments: function (callback) {
-    // get any other segments corresponding with
-    // this segment's endpoints
+    // Get any other segments corresponding with
+    // this segment's endpoints.
     var url = '/db/segments/_design/segments/_view/endpoints?keys=' + JSON.stringify(this.getEndpoints());
     trailguide.httpUtils.json(url, function (err, response) {
       var ids = _.map(response.rows, function (row) {
         return row.id;
       });
-      
+
       ids = _.uniq(ids);
-      
+
       ids = _.reject(ids, function (id) {
-        return id === trailguide.pages.segmentId;  
+        return id === trailguide.pages.segmentId;
       });
-      
-      callback(_.map(ids, function (id) {
+
+      callback(null, _.map(ids, function (id) {
         return trailguide.models.segment(id);
       }));
     });
   },
 
   getPOIs: function() {
-    // get POIs associated with this segment
+    // Get POIs associated with this segment.
     var poiIDs = this.get('pois');
+    return poiIDs;
   },
 
   getRelatedRoutes: function () {
-    // get any routes that include this segment
+    // Get any routes that include this segment.
     var url = '/db/routes/_design/routes/_view/segments?key="' + this.id + '"';
     trailguide.httpUtils.json(url, function (err, response) {
-      console.log(response.rows);  
+      console.log(response.rows);
     });
   },
 
@@ -84,27 +88,37 @@ trailguide.models.Segment = Backbone.Model.extend({
     return L.geoJson(this.toJSON(), options);
   },
 
-  details: function () {
-    // prepare the details object for
-    // this segment's view
-    var details = {
-      'distance': this.getDistance()
-    };
+  details: function (callback) {
+    // Prepare the details object for
+    // this segment's view.
+    var details = {};
 
-    var pois = this.get('pois');
-    if (pois) {
-      details.pois = pois;
-    }
+    // Add distance
+    details.distance = this.getDistance();
 
+    // Add accessibility.
     var accessibility = this.get('accessibility');
     if (accessibility) {
       details.accessibility = accessibility;
     }
 
-    return { 'details': details };
+    // Add adjacent trailheads.
+    this.trailheadsDetails(function (err, response) {
+      details.trailheads = response;
+    });
+
+    // Add POIs.
+    var pois = this.getPOIs();
+    if (pois) {
+      details.pois = pois;
+    }
+
+    // Return
+    callback(null, details);
+
   }
 });
 
-trailguide.models.segment = function(segmentId) {
+trailguide.models.segment = function (segmentId) {
     return new trailguide.models.Segment({ id: segmentId });
 };

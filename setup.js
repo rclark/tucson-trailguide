@@ -57,10 +57,12 @@ var config = {
         // models
         'src/js/models.js',
         'src/js/models/segment.js',
-      
+        'src/js/models/trailhead.js',
+
         // collections
         'src/js/collections.js',
         'src/js/collections/segments.js',
+        'src/js/collections/trailheads.js',
 
         // view templates
         'src/js/templates.js',
@@ -69,7 +71,7 @@ var config = {
         // views
         'src/js/views.js',
         'src/js/views/details.js',
-        
+
         // page namespace
         'src/js/pages.js'
     ]
@@ -77,7 +79,10 @@ var config = {
 
 fs.writeFile(
     'configuration.js',
-    'module.exports=' + JSON.stringify(config) + ';'
+    'module.exports=' + JSON.stringify(config) + ';',
+    function setupDatabase() {
+        require('./db').setupAll();
+    }
 );
 
 // This function can calculate the right authorization hash for updates
