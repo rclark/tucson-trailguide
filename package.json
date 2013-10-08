@@ -46,7 +46,7 @@
     "grunt-autoprefixer": "~0.2.20130806",
     "grunt-contrib-watch": "~0.5.2",
     "grunt-contrib-cssmin": "~0.6.1",
-    "bower": "~1.1.2",
+    "bower": "~1.2.7",
     "grunt-cli": "~0.1.9",
     "jake": "~0.6.10",
     "grunt-express-server": "~0.4.2",
