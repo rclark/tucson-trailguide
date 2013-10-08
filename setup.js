@@ -45,7 +45,7 @@ var config = {
         'bower_components/jade/runtime.js',
         'bower_components/jsts/lib/javascript.util.js',
         'bower_components/jsts/lib/jsts.js',
-        'bower_components/proj4js/dist/proj4.js',
+        'bower_components/proj4/dist/proj4.js',
         'bower_components/async/lib/async.js',
 
         'src/js/trailguide.js',

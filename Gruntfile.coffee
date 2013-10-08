@@ -83,10 +83,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-autoprefixer"
+  grunt.loadNpmTasks "grunt-exec"
 
   grunt.registerTask "style", ["sass:dev", "autoprefixer:dev"]
   grunt.registerTask "build", [
     "style"
+    "exec:buildLeaflet"
     "cssmin:dist"
     "uglify:dist"
   ]
